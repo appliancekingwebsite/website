@@ -37,27 +37,40 @@ export function DiagnosticPanel() {
 export function HeroRepairVisual() {
   return (
     <div className="hero-repair" aria-label="Appliance King repair, installation, and handyman service illustration">
-      <svg viewBox="0 0 620 620" role="img" aria-labelledby="hero-repair-title hero-repair-desc">
-        <title id="hero-repair-title">Appliance service bench</title>
-        <desc id="hero-repair-desc">
-          A service-bay workbench with a washer, tools, airflow duct, and repair tags for Appliance King.
-        </desc>
-        <path className="hero-repair__rail" d="M58 118H562M58 310H562M58 502H562M118 58V562M310 58V562M502 58V562" />
-        <rect className="hero-repair__bench" x="74" y="430" width="472" height="46" rx="5" />
-        <rect className="hero-repair__machine" x="118" y="156" width="218" height="282" rx="14" />
-        <rect className="hero-repair__control" x="144" y="186" width="102" height="24" rx="4" />
-        <circle className="hero-repair__lamp" cx="286" cy="198" r="10" />
-        <circle className="hero-repair__drum" cx="227" cy="304" r="77" />
-        <circle className="hero-repair__drum hero-repair__drum--inner" cx="227" cy="304" r="46" />
-        <path className="hero-repair__hose" d="M336 356h60V239h83v84h58" />
-        <path className="hero-repair__air hero-repair__air--one" d="M350 356h46V239h77" />
-        <path className="hero-repair__air hero-repair__air--two" d="M481 239v84h45" />
-        <path className="hero-repair__wrench" d="M420 118c31-28 78-28 110 0l-51 51 24 24 51-51c28 32 28 79 0 110-31 35-82 39-118 12l-70 70c-8 8-22 8-30 0s-8-22 0-30l70-70c-27-36-23-87 12-118z" />
-        <path className="hero-repair__driver" d="M398 406l79 43 39-70 39 21-39 70 29 16-14 25-146-80z" />
-        <rect className="hero-repair__ticket" x="382" y="74" width="108" height="48" rx="5" />
-        <rect className="hero-repair__ticket hero-repair__ticket--two" x="402" y="520" width="128" height="48" rx="5" />
-        <path className="hero-repair__spark" d="M96 116l18-34 18 34M512 346l24-24 24 24M76 524l34-11 12 32" />
-      </svg>
+      <div className="hero-repair__status" aria-hidden="true">
+        <span className="hero-repair__readout">
+          <i />
+          Diagnostic sequence active
+        </span>
+        <div className="hero-repair__modes">
+          <span>Fix</span>
+          <span>Install</span>
+          <span>Maintain</span>
+        </div>
+      </div>
+      <div className="hero-repair__canvas">
+        <svg viewBox="0 0 620 620" role="img" aria-labelledby="hero-repair-title hero-repair-desc">
+          <title id="hero-repair-title">Appliance service bench</title>
+          <desc id="hero-repair-desc">
+            A service-bay workbench with a washer, tools, airflow duct, and repair tags for Appliance King.
+          </desc>
+          <path className="hero-repair__rail" d="M58 118H562M58 310H562M58 502H562M118 58V562M310 58V562M502 58V562" />
+          <rect className="hero-repair__bench" x="74" y="430" width="472" height="46" rx="5" />
+          <rect className="hero-repair__machine" x="118" y="156" width="218" height="282" rx="14" />
+          <rect className="hero-repair__control" x="144" y="186" width="102" height="24" rx="4" />
+          <circle className="hero-repair__lamp" cx="286" cy="198" r="10" />
+          <circle className="hero-repair__drum" cx="227" cy="304" r="77" />
+          <circle className="hero-repair__drum hero-repair__drum--inner" cx="227" cy="304" r="46" />
+          <path className="hero-repair__hose" d="M336 356h60V239h83v84h58" />
+          <path className="hero-repair__air hero-repair__air--one" d="M350 356h46V239h77" />
+          <path className="hero-repair__air hero-repair__air--two" d="M481 239v84h45" />
+          <path className="hero-repair__wrench" d="M420 118c31-28 78-28 110 0l-51 51 24 24 51-51c28 32 28 79 0 110-31 35-82 39-118 12l-70 70c-8 8-22 8-30 0s-8-22 0-30l70-70c-27-36-23-87 12-118z" />
+          <path className="hero-repair__driver" d="M398 406l79 43 39-70 39 21-39 70 29 16-14 25-146-80z" />
+          <rect className="hero-repair__ticket" x="382" y="74" width="108" height="48" rx="5" />
+          <rect className="hero-repair__ticket hero-repair__ticket--two" x="402" y="520" width="128" height="48" rx="5" />
+          <path className="hero-repair__spark" d="M96 116l18-34 18 34M512 346l24-24 24 24M76 524l34-11 12 32" />
+        </svg>
+      </div>
       <div className="hero-repair__labels" aria-hidden="true">
         <span>Repair</span>
         <span>Install</span>

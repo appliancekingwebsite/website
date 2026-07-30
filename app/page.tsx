@@ -76,9 +76,6 @@ export default function HomePage() {
           </div>
           <div className="home-hero__visual">
             <HeroRepairVisual />
-            <div className="hero-tag">
-              <span>FIX</span><span>INSTALL</span><span>MAINTAIN</span>
-            </div>
           </div>
         </div>
       </section>
