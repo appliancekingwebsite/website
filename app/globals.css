@@ -8,8 +8,10 @@
   --paper-2: oklch(0.935 0.005 80);
   --muted: oklch(0.59 0.012 40);
   --line: oklch(0.82 0.008 60);
-  --red: oklch(0.52 0.2 10.4);
-  --red-dark: oklch(0.39 0.15 10.4);
+  --sky: oklch(0.58 0.18 245);
+  --sky-dark: oklch(0.44 0.14 248);
+  --red: var(--sky);
+  --red-dark: var(--sky-dark);
   --green: oklch(0.72 0.17 150);
   --max: 1240px;
   --narrow: 860px;
@@ -1232,7 +1234,7 @@ p {
 }
 
 .map-radius {
-  fill: oklch(0.52 0.2 10.4 / 0.06);
+  fill: oklch(0.58 0.18 245 / 0.08);
   stroke: var(--red);
   stroke-width: 1.5;
   stroke-dasharray: 5 7;

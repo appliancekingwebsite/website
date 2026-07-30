@@ -2,9 +2,9 @@
 
 ## Overview
 
-**Scene:** a clean appliance service bay after dark—black lacquer panels, white enamel machines, crimson inspection tags, steel fasteners, and diagnostic lights.
+**Scene:** a clean appliance service bay after dark—black lacquer panels, white enamel machines, sky-blue inspection tags, steel fasteners, and diagnostic lights.
 
-**Strategy:** committed monochrome with one saturated service-red accent. The site alternates near-black operational zones with true-white information zones.
+**Strategy:** committed monochrome with one saturated sky-blue service accent. The site alternates near-black operational zones with true-white information zones.
 
 ## Color
 
@@ -19,8 +19,8 @@ All production tokens use OKLCH.
 --ink-inverse: oklch(0.985 0 0);
 --muted: oklch(0.48 0.01 10);
 --muted-inverse: oklch(0.76 0.005 10);
---primary: oklch(0.52 0.2 10.4);
---primary-dark: oklch(0.39 0.16 10.4);
+--primary: oklch(0.58 0.18 245);
+--primary-dark: oklch(0.44 0.14 248);
 --accent: oklch(0.84 0.16 92);
 --line: oklch(0.28 0 0);
 --line-light: oklch(0.88 0 0);
