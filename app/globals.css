@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --ink: oklch(0.115 0.004 18);
-  --ink-2: oklch(0.16 0.006 18);
-  --ink-3: oklch(0.24 0.006 18);
-  --paper: oklch(0.975 0.003 80);
-  --paper-2: oklch(0.935 0.005 80);
-  --muted: oklch(0.59 0.012 40);
-  --line: oklch(0.82 0.008 60);
+  --ink: oklch(0.18 0.018 252);
+  --ink-2: oklch(0.25 0.018 252);
+  --ink-3: oklch(0.34 0.018 252);
+  --paper: oklch(0.995 0 0);
+  --paper-2: oklch(0.965 0.012 245);
+  --paper-3: oklch(0.93 0.025 245);
+  --muted: oklch(0.46 0.022 252);
+  --line: oklch(0.86 0.018 245);
   --sky: oklch(0.58 0.18 245);
   --sky-dark: oklch(0.44 0.14 248);
   --red: var(--sky);
@@ -15,7 +16,7 @@
   --green: oklch(0.72 0.17 150);
   --max: 1240px;
   --narrow: 860px;
-  --shadow: 0 22px 70px rgb(0 0 0 / 0.16);
+  --shadow: 0 14px 32px rgb(20 49 83 / 0.1);
 }
 
 * {
@@ -24,7 +25,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--ink);
+  background: var(--paper);
 }
 
 body {
@@ -199,8 +200,9 @@ p {
 }
 
 .button--outline-light {
-  border-color: rgb(255 255 255 / 0.6);
-  color: white;
+  border-color: oklch(0.58 0.18 245 / 0.45);
+  color: var(--red-dark);
+  background: white;
 }
 
 .button--compact {
@@ -229,9 +231,9 @@ p {
   z-index: 100;
   top: 0;
   height: 76px;
-  color: white;
-  background: rgb(8 8 8 / 0.96);
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  color: var(--ink);
+  background: rgb(255 255 255 / 0.94);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
 
@@ -269,7 +271,7 @@ p {
 
 .brand small {
   margin-top: 3px;
-  color: rgb(255 255 255 / 0.58);
+  color: var(--muted);
   font-size: 0.59rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -299,7 +301,7 @@ p {
   gap: 4px;
   border: 0;
   padding: 0 9px;
-  color: rgb(255 255 255 / 0.75);
+  color: var(--muted);
   background: transparent;
   font-size: 0.75rem;
   font-weight: 700;
@@ -311,7 +313,7 @@ p {
 .nav-trigger:hover,
 .nav-link.is-active,
 .nav-trigger[data-state="open"] {
-  color: white;
+  color: var(--ink);
 }
 
 .nav-link.is-active::after {
@@ -332,8 +334,8 @@ p {
   transform-origin: top;
   overflow: hidden;
   color: var(--ink);
-  background: var(--paper);
-  border: 1px solid rgb(255 255 255 / 0.12);
+  background: white;
+  border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
 
@@ -446,8 +448,8 @@ p {
   display: none;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(255 255 255 / 0.24);
-  color: white;
+  border: 1px solid var(--line);
+  color: var(--ink);
   background: transparent;
 }
 
@@ -455,7 +457,7 @@ p {
   position: fixed;
   z-index: 200;
   inset: 0;
-  background: rgb(0 0 0 / 0.72);
+  background: rgb(18 36 61 / 0.42);
   animation: fade-in 180ms ease;
 }
 
@@ -470,7 +472,7 @@ p {
   flex-direction: column;
   padding: 20px 24px;
   color: var(--ink);
-  background: var(--paper);
+  background: white;
   box-shadow: var(--shadow);
   animation: slide-in 220ms ease-out;
 }
@@ -532,13 +534,14 @@ p {
 }
 
 .section--dark {
-  color: white;
-  background: var(--ink);
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--paper-2), white);
+  border-block: 1px solid var(--line);
 }
 
 .section--dark .section-number,
 .section--dark .eyebrow {
-  color: oklch(0.73 0.16 10);
+  color: var(--red);
 }
 
 .section--enamel {
@@ -566,16 +569,18 @@ p {
 }
 
 .section--dark .split-heading > p {
-  color: rgb(255 255 255 / 0.74);
+  color: var(--muted);
 }
 
 .home-hero {
-  min-height: calc(100svh - 76px);
+  min-height: min(760px, calc(100svh - 76px));
   display: flex;
   align-items: center;
-  color: white;
-  background: var(--ink);
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 82% 16%, oklch(0.58 0.18 245 / 0.12), transparent 28%),
+    linear-gradient(180deg, white 0%, var(--paper-2) 100%);
+  border-bottom: 1px solid var(--line);
 }
 
 .home-hero__grid {
@@ -592,7 +597,7 @@ p {
 
 .home-hero__copy > p {
   max-width: 720px;
-  color: rgb(255 255 255 / 0.78);
+  color: var(--muted);
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
 }
 
@@ -601,8 +606,9 @@ p {
   align-items: center;
   gap: 11px;
   padding: 8px 12px;
-  border: 1px solid rgb(255 255 255 / 0.14);
-  color: rgb(255 255 255 / 0.82);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  background: white;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -617,9 +623,18 @@ p {
   margin-top: 34px;
 }
 
+.hero-actions .button {
+  min-width: 210px;
+}
+
 .home-hero .button--outline {
   color: white;
-  border-color: rgb(255 255 255 / 0.5);
+  border-color: var(--red);
+  background: var(--red);
+}
+
+.home-hero .button--outline:hover {
+  background: var(--red-dark);
 }
 
 .trust-line {
@@ -627,7 +642,7 @@ p {
   flex-wrap: wrap;
   gap: 24px;
   margin-top: 38px;
-  color: rgb(255 255 255 / 0.76);
+  color: var(--muted);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -642,7 +657,7 @@ p {
 
 .trust-line svg {
   width: 16px;
-  color: white;
+  color: var(--red);
 }
 
 .home-hero__visual {
@@ -657,11 +672,11 @@ p {
   min-height: 590px;
   padding: 18px;
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.18);
+  border: 1px solid var(--line);
   background:
-    radial-gradient(circle at 84% 12%, rgb(15 127 217 / 0.14), transparent 22%),
-    linear-gradient(135deg, rgb(255 255 255 / 0.08), transparent 34%),
-    #030303;
+    radial-gradient(circle at 84% 12%, oklch(0.58 0.18 245 / 0.12), transparent 24%),
+    linear-gradient(135deg, white, var(--paper-2) 70%);
+  box-shadow: var(--shadow);
 }
 
 .hero-repair__status {
@@ -677,7 +692,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: rgb(255 255 255 / 0.72);
+  color: var(--muted);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -691,7 +706,7 @@ p {
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 0 5px oklch(0.72 0.17 150 / 0.12);
-  animation: status-pulse 2.8s ease-in-out infinite;
+  animation: status-pulse 4.8s ease-in-out infinite;
 }
 
 .hero-repair__modes {
@@ -703,8 +718,9 @@ p {
 
 .hero-repair__modes span {
   padding: 9px 12px;
-  color: white;
-  background: var(--red);
+  color: var(--red-dark);
+  background: oklch(0.58 0.18 245 / 0.1);
+  border: 1px solid oklch(0.58 0.18 245 / 0.2);
   font-family: var(--font-display), sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
@@ -720,10 +736,10 @@ p {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--line);
   background:
-    radial-gradient(circle at 76% 18%, rgb(255 255 255 / 0.08), transparent 24%),
-    #090909;
+    radial-gradient(circle at 76% 18%, oklch(0.58 0.18 245 / 0.1), transparent 25%),
+    white;
 }
 
 .hero-repair__canvas::before,
@@ -732,7 +748,7 @@ p {
   position: absolute;
   z-index: 0;
   inset: 28px;
-  border: 1px solid rgb(255 255 255 / 0.08);
+  border: 1px solid oklch(0.58 0.18 245 / 0.12);
   pointer-events: none;
 }
 
@@ -753,19 +769,19 @@ p {
 
 .hero-repair__rail {
   fill: none;
-  stroke: rgb(255 255 255 / 0.07);
+  stroke: oklch(0.58 0.18 245 / 0.1);
   stroke-width: 1;
 }
 
 .hero-repair__bench,
 .hero-repair__machine {
-  fill: rgb(255 255 255 / 0.96);
-  stroke: rgb(255 255 255 / 0.18);
+  fill: white;
+  stroke: var(--line);
   stroke-width: 2;
 }
 
 .hero-repair__machine {
-  filter: drop-shadow(18px 24px 0 rgb(255 255 255 / 0.06));
+  filter: drop-shadow(12px 16px 0 oklch(0.58 0.18 245 / 0.08));
 }
 
 .hero-repair__control {
@@ -789,7 +805,7 @@ p {
   stroke-width: 4;
   stroke-dasharray: 18 12;
   transform-origin: 227px 304px;
-  animation: repair-turn 8s linear infinite;
+  animation: repair-turn 18s linear infinite;
 }
 
 .hero-repair__hose,
@@ -797,7 +813,7 @@ p {
 .hero-repair__driver,
 .hero-repair__spark {
   fill: none;
-  stroke: white;
+  stroke: var(--ink-2);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 12;
@@ -813,7 +829,7 @@ p {
   stroke-linecap: round;
   stroke-width: 5;
   stroke-dasharray: 24 16;
-  animation: airflow 3s linear infinite;
+  animation: airflow 8s linear infinite;
 }
 
 .hero-repair__air--two {
@@ -823,7 +839,8 @@ p {
 .hero-repair__spark {
   stroke: var(--red);
   stroke-width: 6;
-  animation: repair-blink 3.4s ease-in-out infinite;
+  opacity: 0.58;
+  animation: repair-blink 7s ease-in-out infinite;
 }
 
 .hero-repair__labels {
@@ -834,9 +851,9 @@ p {
 
 .hero-repair__labels span {
   padding: 8px 12px;
-  color: white;
-  background: rgb(255 255 255 / 0.08);
-  border: 1px solid rgb(255 255 255 / 0.12);
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
   font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -845,8 +862,9 @@ p {
 
 .page-hero {
   padding: 35px 0 82px;
-  color: white;
-  background: var(--ink);
+  color: var(--ink);
+  background: linear-gradient(180deg, white, var(--paper-2));
+  border-bottom: 1px solid var(--line);
 }
 
 .page-hero--compact {
@@ -871,7 +889,7 @@ p {
 
 .page-hero .direct-answer,
 .article-hero .direct-answer {
-  color: rgb(255 255 255 / 0.68);
+  color: var(--muted);
 }
 
 .breadcrumbs ol {
@@ -880,7 +898,7 @@ p {
   gap: 8px;
   margin: 0;
   padding: 0;
-  color: rgb(255 255 255 / 0.48);
+  color: var(--muted);
   font-size: 0.72rem;
   list-style: none;
 }
@@ -891,7 +909,7 @@ p {
 }
 
 .breadcrumbs a:hover {
-  color: white;
+  color: var(--red-dark);
 }
 
 .service-index {
@@ -945,7 +963,9 @@ p {
 }
 
 .service-icon__plate {
-  fill: var(--ink);
+  fill: oklch(0.58 0.18 245 / 0.1);
+  stroke: oklch(0.58 0.18 245 / 0.24);
+  stroke-width: 1;
 }
 
 .service-icon__line,
@@ -957,7 +977,7 @@ p {
 }
 
 .service-icon__line {
-  stroke: white;
+  stroke: var(--ink);
 }
 
 .service-icon__accent-line {
@@ -985,9 +1005,9 @@ p {
 
 .diagnostic-panel {
   padding: 18px;
-  border: 1px solid rgb(255 255 255 / 0.14);
-  background: #050505;
-  box-shadow: 20px 24px 0 rgb(255 255 255 / 0.035);
+  border: 1px solid var(--line);
+  background: white;
+  box-shadow: var(--shadow);
 }
 
 .page-hero .diagnostic-panel {
@@ -997,8 +1017,8 @@ p {
 .diagnostic-panel__screen {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.1);
-  background: #090b0a;
+  border: 1px solid var(--line);
+  background: white;
 }
 
 .diagnostic-panel svg {
@@ -1008,26 +1028,26 @@ p {
 
 .repair-panel__stage {
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--line);
   background:
-    radial-gradient(circle at 76% 18%, rgb(255 255 255 / 0.08), transparent 24%),
-    #090909;
+    radial-gradient(circle at 76% 18%, oklch(0.58 0.18 245 / 0.1), transparent 24%),
+    white;
 }
 
 .repair-grid {
   fill: none;
-  stroke: rgb(255 255 255 / 0.06);
+  stroke: oklch(0.58 0.18 245 / 0.12);
   stroke-width: 1;
 }
 
 .repair-shadow {
-  fill: rgb(255 255 255 / 0.05);
+  fill: oklch(0.58 0.18 245 / 0.08);
 }
 
 .repair-machine,
 .repair-panel__screenbox {
   fill: white;
-  stroke: rgb(255 255 255 / 0.22);
+  stroke: var(--line);
   stroke-width: 2;
 }
 
@@ -1046,7 +1066,7 @@ p {
   stroke-width: 4;
   stroke-dasharray: 16 11;
   transform-origin: 174px 222px;
-  animation: repair-turn 7s linear infinite;
+  animation: repair-turn 18s linear infinite;
 }
 
 .repair-light,
@@ -1065,7 +1085,7 @@ p {
 
 .repair-wrench,
 .repair-driver {
-  stroke: white;
+  stroke: var(--ink-2);
   stroke-width: 10;
 }
 
@@ -1073,7 +1093,7 @@ p {
   stroke: var(--red);
   stroke-width: 5;
   stroke-dasharray: 22 16;
-  animation: repair-pulse 2.8s linear infinite;
+  animation: repair-pulse 8s linear infinite;
 }
 
 .diagnostic-panel__controls {
@@ -1081,7 +1101,7 @@ p {
   align-items: center;
   gap: 8px;
   padding-top: 14px;
-  color: rgb(255 255 255 / 0.62);
+  color: var(--muted);
   font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.09em;
@@ -1092,7 +1112,7 @@ p {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgb(255 255 255 / 0.14);
+  background: var(--line);
 }
 
 .diagnostic-panel__controls i:first-child {
@@ -1106,7 +1126,7 @@ p {
 .steps {
   margin: 35px 0 0;
   padding: 0;
-  border-top: 1px solid rgb(255 255 255 / 0.14);
+  border-top: 1px solid var(--line);
   list-style: none;
 }
 
@@ -1115,7 +1135,7 @@ p {
   grid-template-columns: 44px 1fr;
   gap: 16px;
   padding: 18px 0;
-  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+  border-bottom: 1px solid var(--line);
 }
 
 .steps > li > span {
@@ -1130,7 +1150,7 @@ p {
 
 .steps p {
   margin: 0;
-  color: rgb(255 255 255 / 0.5);
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
@@ -1169,7 +1189,7 @@ p {
 
 .air-duct {
   fill: none;
-  stroke: var(--ink);
+  stroke: var(--ink-2);
   stroke-width: 24;
   stroke-linecap: square;
   stroke-linejoin: miter;
@@ -1177,10 +1197,10 @@ p {
 
 .air-flow {
   fill: none;
-  stroke: white;
+  stroke: var(--red);
   stroke-width: 3;
   stroke-dasharray: 14 16;
-  animation: airflow 2s linear infinite;
+  animation: airflow 7s linear infinite;
 }
 
 .air-flow--two {
@@ -1241,7 +1261,7 @@ p {
   color: var(--red);
   font-size: 2.2rem;
   font-style: normal;
-  animation: arrow-pulse 2s ease-in-out infinite;
+  animation: arrow-pulse 5s ease-in-out infinite;
 }
 
 .dual-links {
@@ -1318,7 +1338,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: rgb(255 255 255 / 0.14);
+  background: var(--line);
 }
 
 .article-grid a {
@@ -1326,14 +1346,14 @@ p {
   display: flex;
   flex-direction: column;
   padding: 35px;
-  background: var(--ink-2);
+  background: white;
   transition: background 180ms ease, transform 180ms ease;
 }
 
 .article-grid a:hover {
   z-index: 1;
-  background: var(--ink-3);
-  transform: translateY(-5px);
+  background: var(--paper-2);
+  transform: translateY(-3px);
 }
 
 .article-grid span {
@@ -1348,7 +1368,7 @@ p {
 }
 
 .article-grid p {
-  color: rgb(255 255 255 / 0.55);
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
@@ -1419,7 +1439,7 @@ p {
 }
 
 .booking-section {
-  background: var(--paper-2);
+  background: white;
   border-block: 1px solid var(--line);
 }
 
@@ -1438,7 +1458,7 @@ p {
 .calendar-shell {
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #000;
+  background: white;
   box-shadow: var(--shadow);
 }
 
@@ -1448,8 +1468,9 @@ p {
   align-items: center;
   gap: 12px;
   padding: 0 20px;
-  color: white;
-  border-bottom: 1px solid rgb(255 255 255 / 0.13);
+  color: var(--ink);
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
 }
 
 .calendar-shell__top p {
@@ -1475,33 +1496,34 @@ p {
   place-items: center;
   align-content: center;
   gap: 12px;
-  color: rgb(255 255 255 / 0.86);
+  color: var(--muted);
 }
 
 .calendar-placeholder span {
   width: 74%;
   height: 50px;
   display: block;
-  border: 1px solid rgb(255 255 255 / 0.13);
+  border: 1px solid var(--line);
+  background: var(--paper-2);
 }
 
 .calendar-placeholder p {
   margin-top: 20px;
-  color: rgb(255 255 255 / 0.74);
+  color: var(--muted);
   font-size: 0.8rem;
 }
 
 .calendar-fallback {
   margin: 0;
   padding: 13px 20px;
-  color: rgb(255 255 255 / 0.76);
-  border-top: 1px solid rgb(255 255 255 / 0.12);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
   font-size: 0.76rem;
   text-align: center;
 }
 
 .calendar-fallback a {
-  color: white;
+  color: var(--red-dark);
   text-decoration: underline;
 }
 
@@ -1512,8 +1534,9 @@ p {
   gap: 50px;
   margin: 0 0 clamp(76px, 9vw, 132px);
   padding: clamp(38px, 6vw, 72px);
-  color: white;
-  background: var(--red);
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--paper-2), white);
+  border: 1px solid var(--line);
 }
 
 .cta-band h2 {
@@ -1523,11 +1546,11 @@ p {
 
 .cta-band p:not(.eyebrow) {
   max-width: 700px;
-  color: rgb(255 255 255 / 0.76);
+  color: var(--muted);
 }
 
 .cta-band .eyebrow {
-  color: white;
+  color: var(--red);
 }
 
 .cta-band__actions {
@@ -1564,7 +1587,7 @@ p {
   gap: 1px;
   margin: 0;
   padding: 1px;
-  background: rgb(255 255 255 / 0.13);
+  background: var(--line);
   list-style: none;
 }
 
@@ -1574,7 +1597,7 @@ p {
   align-items: center;
   gap: 16px;
   padding: 22px;
-  background: var(--ink);
+  background: white;
 }
 
 .signal-grid li span {
@@ -1746,8 +1769,9 @@ p {
 
 .article-hero {
   padding: 35px 0 88px;
-  color: white;
-  background: var(--ink);
+  color: var(--ink);
+  background: linear-gradient(180deg, white, var(--paper-2));
+  border-bottom: 1px solid var(--line);
 }
 
 .article-hero h1 {
@@ -1757,7 +1781,7 @@ p {
 .article-meta {
   display: flex;
   gap: 24px;
-  color: rgb(255 255 255 / 0.45);
+  color: var(--muted);
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2029,7 +2053,7 @@ p {
   right: 22px;
   bottom: 20px;
   left: 22px;
-  display: flex;
+  display: none;
   justify-content: space-between;
   pointer-events: none;
   transition: transform 180ms ease, opacity 180ms ease;
@@ -2049,10 +2073,10 @@ p {
   justify-content: center;
   gap: 9px;
   padding: 13px 18px;
-  color: white;
-  background: var(--ink);
-  border: 1px solid rgb(255 255 255 / 0.18);
-  box-shadow: 0 8px 0 rgb(0 0 0 / 0.18);
+  color: var(--red-dark);
+  background: white;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgb(20 49 83 / 0.12);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -2066,6 +2090,7 @@ p {
 }
 
 .mobile-actions a:first-child {
+  color: white;
   background: var(--red);
 }
 
@@ -2455,12 +2480,13 @@ p {
   }
 
   .mobile-actions {
+    display: flex;
     right: 0;
     bottom: 0;
     left: 0;
     gap: 0;
-    background: var(--ink);
-    border-top: 1px solid rgb(255 255 255 / 0.2);
+    background: white;
+    border-top: 1px solid var(--line);
   }
 
   .mobile-actions a {

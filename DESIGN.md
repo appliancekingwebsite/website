@@ -2,28 +2,27 @@
 
 ## Overview
 
-**Scene:** a clean appliance service bay after dark—black lacquer panels, white enamel machines, sky-blue inspection tags, steel fasteners, and diagnostic lights.
+**Scene:** a clean daytime appliance service counter—white enamel surfaces, sky-blue inspection tags, steel fasteners, clear forms, and calm diagnostic lights.
 
-**Strategy:** committed monochrome with one saturated sky-blue service accent. The site alternates near-black operational zones with true-white information zones.
+**Strategy:** white-first service clarity with one saturated sky-blue action accent. The site uses light, high-contrast sections for fast mobile scanning and reserves dark ink for text, footer contrast, and small mechanical details.
 
 ## Color
 
 All production tokens use OKLCH.
 
 ```css
---background: oklch(0.075 0 0);
---surface-dark: oklch(0.12 0 0);
---surface: oklch(0.965 0 0);
---paper: oklch(1 0 0);
---ink: oklch(0.12 0 0);
+--background: oklch(0.995 0 0);
+--surface: oklch(0.965 0.012 245);
+--surface-blue: oklch(0.93 0.025 245);
+--paper: oklch(0.995 0 0);
+--ink: oklch(0.18 0.018 252);
 --ink-inverse: oklch(0.985 0 0);
---muted: oklch(0.48 0.01 10);
+--muted: oklch(0.46 0.022 252);
 --muted-inverse: oklch(0.76 0.005 10);
 --primary: oklch(0.58 0.18 245);
 --primary-dark: oklch(0.44 0.14 248);
 --accent: oklch(0.84 0.16 92);
---line: oklch(0.28 0 0);
---line-light: oklch(0.88 0 0);
+--line: oklch(0.86 0.018 245);
 ```
 
 White text is used on the saturated primary. Body copy meets at least 4.5:1 contrast, with primary reading surfaces targeting 7:1.
@@ -46,7 +45,7 @@ White text is used on the saturated primary. Body copy meets at least 4.5:1 cont
 ## Signature Components
 
 - Service-bay header with an accessible fixed-position services panel
-- Hero diagnostic console with real logo poster and progressive GLB enhancement
+- Hero estimate panel with calm service indicators and progressive GLB enhancement
 - Appliance line-up that behaves like a labeled shop diagram
 - Dryer airflow SVG with animated lint/air path
 - Buy · Sell · Fix lifecycle dial
@@ -55,8 +54,8 @@ White text is used on the saturated primary. Body copy meets at least 4.5:1 cont
 
 ## Motion
 
-- One orchestrated hero sequence: crown mark, diagnostic sweep, and service indicators
-- SVG stroke motion communicates airflow or diagnostic progress
+- One calm hero sequence: service indicators, slow appliance motion, and clear action buttons
+- SVG stroke motion communicates airflow or diagnostic progress only when it adds understanding
 - Hover motion is limited to 2–4px or a small rotation
 - No content begins hidden
 - `prefers-reduced-motion: reduce` disables model rotation, stroke travel, and scroll smoothing

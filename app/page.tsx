@@ -52,11 +52,11 @@ export default function HomePage() {
       <section className="home-hero">
         <div className="content-shell home-hero__grid">
           <div className="home-hero__copy">
-            <div className="availability"><span className="status-dot" /> Serving Macon and nearby communities</div>
-            <h1>Macon appliance repair that gets the day moving again.</h1>
+            <div className="availability"><span className="status-dot" /> Local help for Macon and nearby communities</div>
+            <h1>Appliance help in Macon without the runaround.</h1>
             <p>
-              Appliance King repairs and installs major household appliances, handles dryer-vent and handyman work,
-              supports commercial properties, and buys and sells changing used inventory.
+              Call or book online when a washer, dryer, refrigerator, oven, vent, or install needs attention.
+              Appliance King reviews the scope first so the next step is clear.
             </p>
             <div className="hero-actions">
               <a className="button button--primary" href={business.phoneHref}>
@@ -69,9 +69,9 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="trust-line">
-              <span><ShieldCheck aria-hidden="true" /> Insured</span>
-              <span><Wrench aria-hidden="true" /> Home + commercial</span>
-              <span><Check aria-hidden="true" /> Scope explained first</span>
+              <span><ShieldCheck aria-hidden="true" /> Insured service</span>
+              <span><Wrench aria-hidden="true" /> Home and commercial</span>
+              <span><Check aria-hidden="true" /> Clear next step</span>
             </div>
           </div>
           <div className="home-hero__visual">
@@ -83,7 +83,7 @@ export default function HomePage() {
       <section className="section content-shell">
         <div className="split-heading">
           <div>
-            <p className="section-number">01 / SERVICE BOARD</p>
+            <p className="section-number">Services people call about</p>
             <h2>What can Appliance King help you fix?</h2>
           </div>
           <p>
@@ -109,8 +109,8 @@ export default function HomePage() {
       <section className="section section--dark diagnostic-section">
         <div className="content-shell diagnostic-section__grid">
           <div>
-            <p className="section-number">02 / PROCESS</p>
-            <h2>How does an appliance estimate work?</h2>
+            <p className="section-number">What happens next</p>
+            <h2>How does an estimate work?</h2>
             <p className="direct-answer">
               Book a time, describe the symptom, and make the appliance accessible. Appliance King inspects the
               relevant conditions, explains what is observed, and discusses the practical next step before the scope
@@ -128,7 +128,7 @@ export default function HomePage() {
 
       <section className="section content-shell vent-feature">
         <div>
-          <p className="section-number">03 / AIRFLOW</p>
+          <p className="section-number">Dryer vent help</p>
           <h2>Could the dryer be fine while the vent is the problem?</h2>
           <p className="direct-answer">
             Yes. Long cycles, excess heat, weak exterior airflow, and lint around connections can involve the exhaust
@@ -146,7 +146,7 @@ export default function HomePage() {
         <div className="content-shell">
           <div className="split-heading">
             <div>
-              <p className="section-number">04 / APPLIANCE LIFECYCLE</p>
+              <p className="section-number">Buy, sell, or repair</p>
               <h2>Need to buy, sell, or fix?</h2>
             </div>
             <p>
@@ -165,7 +165,7 @@ export default function HomePage() {
       <section className="section content-shell location-feature">
         <ServiceAreaMap />
         <div>
-          <p className="section-number">05 / LOCAL COVERAGE</p>
+          <p className="section-number">Macon-area service</p>
           <h2>Which communities around Macon do you serve?</h2>
           <p className="direct-answer">
             Normal service centers on Macon and nearby communities within the practical local market. Coverage includes
@@ -180,7 +180,7 @@ export default function HomePage() {
         <div className="content-shell">
           <div className="split-heading">
             <div>
-              <p className="section-number">06 / FIELD GUIDES</p>
+              <p className="section-number">Helpful appliance guides</p>
               <h2>Questions worth answering before the appointment.</h2>
             </div>
             <p>Practical, safety-aware guides written around real decisions—not keyword filler.</p>
@@ -201,7 +201,7 @@ export default function HomePage() {
       <section className="section content-shell faq-section">
         <div className="split-heading">
           <div>
-            <p className="section-number">07 / QUICK ANSWERS</p>
+            <p className="section-number">Quick answers</p>
             <h2>What do customers ask before booking?</h2>
           </div>
           <p>Clear answers about the work, coverage, and next step.</p>
@@ -212,7 +212,7 @@ export default function HomePage() {
       <section className="section booking-section" id="booking">
         <div className="content-shell booking-section__grid">
           <div>
-            <p className="section-number">08 / SCHEDULE</p>
+            <p className="section-number">Call or schedule</p>
             <h2>Book an estimate without phone tag.</h2>
             <p>
               Choose an available time through the secure Calendly calendar. Prefer to talk first? Call{" "}

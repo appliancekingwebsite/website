@@ -40,7 +40,7 @@ export function HeroRepairVisual() {
       <div className="hero-repair__status" aria-hidden="true">
         <span className="hero-repair__readout">
           <i />
-          Diagnostic sequence active
+          Estimate notes ready
         </span>
         <div className="hero-repair__modes">
           <span>Fix</span>
