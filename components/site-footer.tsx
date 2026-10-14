@@ -12,7 +12,8 @@ export function SiteFooter() {
           <div>
             <strong>Appliance King</strong>
             <p>Buy · Sell · Fix</p>
-            <p>Macon, Georgia · delivery &amp; pickup within about 40 miles</p>
+            <p>{business.address.full}</p>
+            <p>Delivery &amp; pickup within 40 miles of Macon</p>
           </div>
         </div>
         <div>
@@ -39,6 +40,8 @@ export function SiteFooter() {
         <div>
           <p className="footer-heading">Business</p>
           <a href={business.phoneHref}>{business.phoneDisplay}</a>
+          <a href={business.address.mapUrl} target="_blank" rel="noopener noreferrer">{business.address.street}, {business.address.city}, {business.address.region} {business.address.zip}</a>
+          <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer me">Facebook</a>
           <Link href="/service-areas">Service areas</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>

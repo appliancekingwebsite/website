@@ -1,7 +1,23 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowLeft, ArrowRight, CalendarDays, Check, MessageSquareText, Phone, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarDays,
+  Check,
+  CookingPot,
+  Refrigerator,
+  MapPin,
+  MessageSquareText,
+  Phone,
+  Utensils,
+  WashingMachine,
+  Wind,
+  Wrench,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { INTAKE_EVENT } from "@/components/intake-button";
@@ -11,12 +27,23 @@ import {
   budgets,
   buildMessage,
   estimateTimes,
+  inServiceArea,
+  isValidZip,
   smsHref,
   timelines,
   type IntakeData,
   type IntakeMode,
 } from "@/lib/intake";
 import { trackConversion } from "@/lib/track";
+
+const icons: Record<string, LucideIcon> = {
+  washer: WashingMachine,
+  dryer: Wind,
+  refrigerator: Refrigerator,
+  stove: CookingPot,
+  dishwasher: Utensils,
+  other: Wrench,
+};
 
 const blank = (mode: IntakeMode): IntakeData => ({
   mode,
@@ -27,6 +54,8 @@ const blank = (mode: IntakeMode): IntakeData => ({
   problem: "",
   name: "",
   city: "",
+  address: "",
+  zip: "",
 });
 
 export function IntakeModal() {
@@ -55,6 +84,9 @@ export function IntakeModal() {
 
   const steps = shop ? ["What", "Preferences", "Send"] : ["What", "Problem", "Send"];
   const canNext = step === 0 ? data.items.length > 0 : true;
+  const zipOk = isValidZip(data.zip);
+  const nameOk = data.name.trim().length > 1;
+  const areaOk = inServiceArea(data.city);
   const message = buildMessage(data);
   const progress = ((step + 1) / steps.length) * 100;
 
@@ -78,6 +110,13 @@ export function IntakeModal() {
           <div className="intake__bar" aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
           <p className="intake__steps">Step {step + 1} of {steps.length} · {steps[step]}</p>
 
+          <p className="intake__area">
+            <MapPin aria-hidden="true" size={16} />
+            <span>
+              {shop ? "Delivery & pickup only" : "Service"} in <strong>Macon and cities within {business.serviceRadiusMiles} miles</strong>.
+            </span>
+          </p>
+
           {step === 0 && (
             <div>
               <h3>{shop ? "What are you shopping for?" : "What needs fixing?"}</h3>
@@ -93,7 +132,10 @@ export function IntakeModal() {
                       aria-pressed={on}
                       onClick={() => toggle(a.id)}
                     >
-                      <span aria-hidden="true">{a.emoji}</span>
+                      {(() => {
+                        const Icon = icons[a.id];
+                        return <Icon className="intake__icon" aria-hidden="true" size={30} strokeWidth={1.8} />;
+                      })()}
                       {a.label}
                       {on && <Check className="intake__tick" aria-hidden="true" size={16} />}
                     </button>
@@ -144,20 +186,40 @@ export function IntakeModal() {
 
           {step === 2 && (
             <div>
-              <h3>Almost done. Who&apos;s texting?</h3>
+              <h3>Where are you? We check how far you are.</h3>
+              <label className="intake__field"><span>Your name *</span>
+                <input autoComplete="given-name" value={data.name} onChange={(e) => set("name", e.target.value)} placeholder="First name" />
+              </label>
+              <label className="intake__field"><span>Street address (optional)</span>
+                <input autoComplete="street-address" value={data.address} onChange={(e) => set("address", e.target.value)} placeholder="123 Main St" />
+              </label>
               <div className="intake__two">
-                <label className="intake__field"><span>Your name</span>
-                  <input autoComplete="given-name" value={data.name} onChange={(e) => set("name", e.target.value)} placeholder="First name" />
-                </label>
                 <label className="intake__field"><span>City</span>
-                  <input autoComplete="address-level2" value={data.city} onChange={(e) => set("city", e.target.value)} placeholder="Macon" />
+                  <input autoComplete="address-level2" list="intake-cities" value={data.city} onChange={(e) => set("city", e.target.value)} placeholder="Macon" />
+                  <datalist id="intake-cities">
+                    {business.normalAreas.map((c) => <option key={c} value={c} />)}
+                  </datalist>
+                </label>
+                <label className="intake__field"><span>ZIP code *</span>
+                  <input autoComplete="postal-code" inputMode="numeric" maxLength={5} value={data.zip} onChange={(e) => set("zip", e.target.value.replace(/\D/g, ""))} placeholder="31206" />
                 </label>
               </div>
+              {!areaOk && (
+                <p className="intake__warn" role="alert">
+                  {data.city} isn&apos;t on our usual list. Send it anyway and we&apos;ll confirm if we can reach you, or call {business.phoneDisplay}.
+                </p>
+              )}
               <pre className="intake__preview" aria-label="Your message preview">{message}</pre>
-              <a className="ak-btn ak-btn--primary intake__send" href={smsHref(message)} onClick={send}>
-                <MessageSquareText aria-hidden="true" size={19} /> Text this to Appliance King
-              </a>
-              <p className="intake__hint">Opens your messages with everything filled in. Just tap send.</p>
+              {zipOk && nameOk ? (
+                <a className="ak-btn ak-btn--primary intake__send" href={smsHref(message)} onClick={send}>
+                  <MessageSquareText aria-hidden="true" size={19} /> Text this to Appliance King
+                </a>
+              ) : (
+                <button type="button" className="ak-btn ak-btn--primary intake__send" disabled>
+                  <MessageSquareText aria-hidden="true" size={19} /> Add your name &amp; ZIP to send
+                </button>
+              )}
+              <p className="intake__hint">Opens your messages with everything filled in. Just tap send. We&apos;re at {business.address.full}.</p>
               <div className="intake__alt">
                 <a href={business.phoneHref}><Phone aria-hidden="true" size={16} /> Call {business.phoneDisplay}</a>
                 <Link href="/book" data-book onClick={() => setOpen(false)}><CalendarDays aria-hidden="true" size={16} /> Pick a time instead</Link>

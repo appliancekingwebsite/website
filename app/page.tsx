@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, Check, Phone, ShieldCheck, Truck, Wrench } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, MapPin, MessageCircle, Phone, ShieldCheck, Truck, Wrench } from "lucide-react";
 import Link from "next/link";
 import { ActionRow, CityChips, Photo, SectionHead } from "@/components/ak";
 import { CalendlyEmbed } from "@/components/calendly-embed";
@@ -118,7 +118,14 @@ export default function HomePage() {
               title="Which cities do you serve around Macon?"
               text={`Appliance King delivers and picks up in Macon and cities within about ${business.serviceRadiusMiles} miles. Confirm your address when you call or book.`}
             />
+            <p className="ak-note ak-note--strong">
+              <strong>Delivery and pickup are only available in Macon and cities within {business.serviceRadiusMiles} miles of our showroom.</strong>
+            </p>
             <CityChips limit={14} />
+            <div className="visit">
+              <a href={business.address.mapUrl} target="_blank" rel="noopener noreferrer"><MapPin aria-hidden="true" size={17} /> {business.address.full}</a>
+              <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer me"><MessageCircle aria-hidden="true" size={17} /> Follow &amp; message us on Facebook</a>
+            </div>
             <Link className="ak-link" href="/delivery-pickup">
               See all cities and how it works <ArrowRight aria-hidden="true" size={16} />
             </Link>

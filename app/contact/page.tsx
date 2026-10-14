@@ -1,4 +1,4 @@
-import { CalendarDays, MapPin, Phone } from "lucide-react";
+import { CalendarDays, MapPin, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { business } from "@/lib/business";
@@ -24,6 +24,8 @@ export default function ContactPage() {
       <section className="section content-shell contact-options">
         <a href={business.phoneHref}><Phone aria-hidden="true" /><span>Call Appliance King</span><strong>{business.phoneDisplay}</strong></a>
         <Link href="/book"><CalendarDays aria-hidden="true" /><span>Book online</span><strong>Choose an available time</strong></Link>
+        <a href={business.address.mapUrl} target="_blank" rel="noopener noreferrer"><MapPin aria-hidden="true" /><span>Visit the showroom</span><strong>{business.address.full}</strong></a>
+        <a href={business.facebookUrl} target="_blank" rel="noopener noreferrer me"><MessageCircle aria-hidden="true" /><span>Message us on Facebook</span><strong>Appliance King</strong></a>
         <Link href="/service-areas"><MapPin aria-hidden="true" /><span>Check coverage</span><strong>Macon + nearby communities</strong></Link>
       </section>
     </main>

@@ -46,6 +46,7 @@ export const organizationSchema = {
   url: siteUrl,
   logo: `${siteUrl}${business.logoPath}`,
   telephone: business.phoneDisplay,
+  sameAs: [business.facebookUrl],
 };
 
 export const localBusinessSchema = {
@@ -59,10 +60,14 @@ export const localBusinessSchema = {
   telephone: "+14782737539",
   address: {
     "@type": "PostalAddress",
+    streetAddress: business.address.street,
     addressLocality: business.baseCity,
     addressRegion: business.stateCode,
+    postalCode: business.address.zip,
     addressCountry: "US",
   },
+  hasMap: business.address.mapUrl,
+  sameAs: [business.facebookUrl],
   geo: { "@type": "GeoCoordinates", latitude: 32.8407, longitude: -83.6324 },
   areaServed: [
     {

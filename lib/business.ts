@@ -9,6 +9,15 @@ export const business = {
   bookingUrl: "https://calendly.com/applianceking-estimate/estimate",
   bookingEmbedUrl:
     "https://calendly.com/applianceking-estimate/estimate?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=12171f&primary_color=12a150",
+  address: {
+    street: "928 S Ponce De Leon Cir",
+    city: "Macon",
+    region: "GA",
+    zip: "31206",
+    full: "928 S Ponce De Leon Cir, Macon, GA 31206",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=928+S+Ponce+De+Leon+Cir%2C+Macon%2C+GA+31206",
+  },
+  facebookUrl: "https://www.facebook.com/p/Appliance-King-61592661480855/",
   baseCity: "Macon",
   state: "Georgia",
   stateCode: "GA",
@@ -65,9 +74,11 @@ export const tracking = {
   googleAdsCallLabel: process.env.NEXT_PUBLIC_GADS_CALL_LABEL ?? "hTi1CLihlp0dEOS3n8RD",
 } as const;
 
-export const siteUrl =
+/** The apex domain 308-redirects to www, so www is the one canonical origin (never the apex). */
+const rawSiteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  (process.env.NODE_ENV === "production" ? "https://appliancekingrepair.com" : "http://localhost:3000");
+  (process.env.NODE_ENV === "production" ? "https://www.appliancekingrepair.com" : "http://localhost:3000");
+export const siteUrl = rawSiteUrl.replace("//appliancekingrepair.com", "//www.appliancekingrepair.com");
 
 export const hasProductionDomain =
   !siteUrl.includes("example.com") &&
