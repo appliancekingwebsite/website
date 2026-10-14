@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   description:
     "Buy used washers, dryers, ovens and refrigerators, book appliance repair, and arrange delivery or pickup in Macon, GA and cities within about 40 miles.",
   applicationName: business.name,
+  other: { "facebook-domain-verification": "5mnqw82zagzbq637whov1stl5cmttj" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },
