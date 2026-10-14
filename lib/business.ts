@@ -7,7 +7,7 @@ export const business = {
   phoneHref: "tel:+14782737539",
   bookingUrl: "https://calendly.com/applianceking-estimate/estimate",
   bookingEmbedUrl:
-    "https://calendly.com/applianceking-estimate/estimate?hide_event_type_details=1&hide_gdpr_banner=1&background_color=15181d&text_color=f6f4ef&primary_color=ff5a1f",
+    "https://calendly.com/applianceking-estimate/estimate?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=12171f&primary_color=12a150",
   baseCity: "Macon",
   state: "Georgia",
   stateCode: "GA",
