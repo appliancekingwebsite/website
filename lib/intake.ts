@@ -47,8 +47,8 @@ export function buildMessage(d: IntakeData) {
         ];
   lines.push(
     `Name: ${d.name || "-"}`,
-    `Address: ${d.address || "-"}`,
-    `City: ${d.city || "-"}, GA ${d.zip || ""}`.trim(),
+    d.address ? `Address: ${d.address}` : "",
+    `Location: ${[d.city, "GA", d.zip].filter(Boolean).join(" ")}`,
   );
   return lines.filter(Boolean).join("\n");
 }

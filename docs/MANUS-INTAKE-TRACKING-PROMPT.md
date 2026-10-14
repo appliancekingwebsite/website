@@ -38,3 +38,10 @@ Google Ads -> Goals -> Conversions: after the test taps above, confirm the two n
 
 ## Report back
 List what passed, what failed, and every label/ID, in the format above.
+
+## Part 4: Rank on Google (do these off-site steps; they matter more than anything on the site)
+1. **Google Business Profile** (business.google.com): claim/verify "Appliance King", address 928 S Ponce De Leon Cir, Macon, GA 31206, phone 478-273-7539, website https://www.appliancekingrepair.com, categories: Used appliance store (primary), Appliance repair service, Appliance store. Set service area to Macon + cities within 40 miles. Add hours (ask me), 10+ real showroom photos, and the Facebook link. Create 3 Products (washers, dryers, refrigerators, ranges) and a weekly Update post. Report verification status.
+2. **Reviews**: generate the profile's review link and give it to me so I can text it to customers. Goal: 15+ reviews with words like "used washer", "Macon".
+3. **Search Console** (search.google.com/search-console): add property `https://www.appliancekingrepair.com` (URL prefix), verify via DNS or HTML tag (tell me the tag), submit `https://www.appliancekingrepair.com/sitemap.xml`, and request indexing for /, /used-appliances, /services, /delivery-pickup. Report any coverage errors.
+4. **Citations**: make the name/address/phone identical (NAP) on Facebook page, Yelp, Bing Places, Apple Business Connect, Nextdoor, BBB, Yellow Pages. Report links.
+5. **Facebook page**: https://www.facebook.com/p/Appliance-King-61592661480855/ : set the address, phone, website, and category to match exactly.
