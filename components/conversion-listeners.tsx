@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { metaEvent, trackConversion } from "@/lib/track";
+import { tracking } from "@/lib/business";
+import { initMetaMatching, metaEvent, trackConversion } from "@/lib/track";
 
 /**
  * Site-wide conversion listeners (no per-button wiring needed):
@@ -12,6 +13,10 @@ import { metaEvent, trackConversion } from "@/lib/track";
  */
 export function ConversionListeners() {
   const pathname = usePathname();
+
+  useEffect(() => {
+    initMetaMatching(tracking.metaPixelId);
+  }, []);
 
   useEffect(() => {
     // PageView on every route (initial load and client-side navigation), mirrored to the Conversions API with one shared event_id.
@@ -39,6 +44,10 @@ export function ConversionListeners() {
       const href = link.getAttribute("href") ?? "";
       if (href.startsWith("tel:")) {
         trackConversion("call");
+      } else if (href.startsWith("sms:")) {
+        if (!link.closest(".intake")) trackConversion("sms_click");
+      } else if (href.includes("google.com/maps")) {
+        trackConversion("map_click");
       } else if (href.includes("calendly.com") || href === "/book" || href === "#booking" || link.hasAttribute("data-book")) {
         trackConversion("booking_click");
       }

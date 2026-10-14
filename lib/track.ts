@@ -7,7 +7,7 @@ type Win = Window & {
   clarity?: (...args: unknown[]) => void;
 };
 
-export type ConversionKind = "booking" | "call" | "booking_click" | "intake_start" | "intake_items" | "shop_lead" | "estimate_lead";
+export type ConversionKind = "booking" | "call" | "booking_click" | "intake_start" | "intake_items" | "shop_lead" | "estimate_lead" | "map_click" | "sms_click";
 
 const fired = new Set<string>();
 
@@ -34,6 +34,13 @@ function newId() {
 }
 
 /** Sends one Meta event through the browser pixel and the server (Conversions API) with a shared event_id. */
+/** Passes the anonymous visitor id to the Meta pixel (advanced matching) so browser events match the server events. */
+export function initMetaMatching(pixelId: string) {
+  const w = window as Win;
+  const id = externalId();
+  if (id && typeof w.fbq === "function") w.fbq("init", pixelId, { external_id: id });
+}
+
 export type MetaUser = { fn?: string; ct?: string; zp?: string };
 
 export function metaEvent(name: string, data: Record<string, string | number | boolean> = {}, seed?: string, user?: MetaUser) {
@@ -83,6 +90,8 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string, user?:
       intake_items: "intake_items_selected",
       shop_lead: "shop_text_lead",
       estimate_lead: "estimate_text_lead",
+      map_click: "find_location",
+      sms_click: "click_to_text",
     }[kind];
     w.gtag("event", eventName, { event_category: "conversion", page_path: page, value: 1, currency: "USD", transport_type: "beacon" });
     if (kind === "booking") w.gtag("event", "generate_lead", { page_path: page, lead_type: "booked_call" });
@@ -117,6 +126,10 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string, user?:
     const shop = kind === "shop_lead";
     metaEvent("Lead", { content_name: shop ? "Shop intake text" : "Estimate intake text", lead_type: kind, lead_intent: shop ? "buy_or_sell_appliance" : "appliance_repair", value: 1, currency: "USD" }, dedupeKey, user);
     metaEvent("Contact", { content_name: shop ? "Shop intake text" : "Estimate intake text" }, dedupeKey, user);
+  } else if (kind === "map_click") {
+    metaEvent("FindLocation", { content_name: "Showroom directions", lead_intent: intent });
+  } else if (kind === "sms_click") {
+    metaEvent("Contact", { content_name: "Text message", lead_intent: intent, value: 1, currency: "USD" });
   } else if (kind === "intake_items") {
     metaEvent("AddToCart", { content_name: "Appliance selection", lead_intent: intent });
   } else if (kind === "intake_start") {
@@ -126,7 +139,7 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string, user?:
   }
 
   if (w.uetq) {
-    const action = { booking: "schedule", call: "call", booking_click: "begin_booking", intake_start: "begin_intake", intake_items: "intake_items", shop_lead: "shop_lead", estimate_lead: "estimate_lead" }[kind];
+    const action = { booking: "schedule", call: "call", booking_click: "begin_booking", intake_start: "begin_intake", intake_items: "intake_items", shop_lead: "shop_lead", estimate_lead: "estimate_lead", map_click: "map", sms_click: "sms" }[kind];
     w.uetq.push("event", action, { event_category: "conversion", event_label: page, event_value: 1 });
   }
 
