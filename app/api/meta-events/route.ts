@@ -14,6 +14,12 @@ type Body = {
   fbp?: string;
   fbc?: string;
   custom_data?: Record<string, string | number | boolean>;
+  user?: { fn?: string; ct?: string; zp?: string };
+};
+
+const hash = (v?: string) => {
+  const n = v?.trim().toLowerCase();
+  return n ? [createHash("sha256").update(n).digest("hex")] : undefined;
 };
 
 /**
@@ -50,6 +56,11 @@ export async function POST(request: Request) {
           external_id: body.external_id ? [createHash("sha256").update(body.external_id).digest("hex")] : undefined,
           fbp: body.fbp,
           fbc: body.fbc,
+          fn: hash(body.user?.fn?.split(" ")[0]),
+          ct: hash(body.user?.ct?.replace(/[^a-z]/gi, "")),
+          zp: hash(body.user?.zp?.slice(0, 5)),
+          country: hash("us"),
+          st: hash("ga"),
         },
         custom_data: body.custom_data,
       },

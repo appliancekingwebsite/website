@@ -34,7 +34,9 @@ function newId() {
 }
 
 /** Sends one Meta event through the browser pixel and the server (Conversions API) with a shared event_id. */
-export function metaEvent(name: string, data: Record<string, string | number | boolean> = {}, seed?: string) {
+export type MetaUser = { fn?: string; ct?: string; zp?: string };
+
+export function metaEvent(name: string, data: Record<string, string | number | boolean> = {}, seed?: string, user?: MetaUser) {
   if (typeof window === "undefined") return;
   const w = window as Win;
   const eventId = seed ? `${name}-${seed}` : newId();
@@ -48,6 +50,7 @@ export function metaEvent(name: string, data: Record<string, string | number | b
     fbp: cookie("_fbp"),
     fbc: cookie("_fbc") ?? (fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined),
     custom_data: data,
+    user,
   });
   try {
     if (!navigator.sendBeacon?.("/api/meta-events", new Blob([body], { type: "application/json" }))) {
@@ -62,7 +65,7 @@ export function metaEvent(name: string, data: Record<string, string | number | b
  * Fires one conversion to Google (Ads + GA4), Meta and Microsoft in a single
  * call. `dedupeKey` keeps one booking from being counted twice per platform.
  */
-export function trackConversion(kind: ConversionKind, dedupeKey?: string) {
+export function trackConversion(kind: ConversionKind, dedupeKey?: string, user?: MetaUser) {
   if (typeof window === "undefined") return;
   const key = `${kind}:${dedupeKey ?? ""}`;
   if (dedupeKey && fired.has(key)) return;
@@ -112,8 +115,8 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string) {
     metaEvent("Lead", { content_name: "Phone call", lead_type: "call", lead_intent: intent });
   } else if (kind === "shop_lead" || kind === "estimate_lead") {
     const shop = kind === "shop_lead";
-    metaEvent("Lead", { content_name: shop ? "Shop intake text" : "Estimate intake text", lead_type: kind, lead_intent: shop ? "buy_or_sell_appliance" : "appliance_repair", value: 1, currency: "USD" }, dedupeKey);
-    metaEvent("Contact", { content_name: shop ? "Shop intake text" : "Estimate intake text" }, dedupeKey);
+    metaEvent("Lead", { content_name: shop ? "Shop intake text" : "Estimate intake text", lead_type: kind, lead_intent: shop ? "buy_or_sell_appliance" : "appliance_repair", value: 1, currency: "USD" }, dedupeKey, user);
+    metaEvent("Contact", { content_name: shop ? "Shop intake text" : "Estimate intake text" }, dedupeKey, user);
   } else if (kind === "intake_items") {
     metaEvent("AddToCart", { content_name: "Appliance selection", lead_intent: intent });
   } else if (kind === "intake_start") {

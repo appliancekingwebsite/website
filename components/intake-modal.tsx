@@ -94,7 +94,8 @@ export function IntakeModal() {
     if (step === 0) trackConversion("intake_items");
     setStep((s) => s + 1);
   };
-  const send = () => trackConversion(shop ? "shop_lead" : "estimate_lead", `${data.mode}-${Date.now()}`);
+  const send = () =>
+    trackConversion(shop ? "shop_lead" : "estimate_lead", `${data.mode}-${Date.now()}`, { fn: data.name, ct: data.city, zp: data.zip });
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
