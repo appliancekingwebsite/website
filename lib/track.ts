@@ -7,7 +7,7 @@ type Win = Window & {
   clarity?: (...args: unknown[]) => void;
 };
 
-export type ConversionKind = "booking" | "call" | "booking_click";
+export type ConversionKind = "booking" | "call" | "booking_click" | "intake_start" | "intake_items" | "shop_lead" | "estimate_lead";
 
 const fired = new Set<string>();
 
@@ -72,12 +72,26 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string) {
   const page = window.location.pathname;
 
   if (typeof w.gtag === "function") {
-    const eventName =
-      kind === "booking" ? "schedule_appointment" : kind === "call" ? "click_to_call" : "begin_booking";
+    const eventName = {
+      booking: "schedule_appointment",
+      call: "click_to_call",
+      booking_click: "begin_booking",
+      intake_start: "begin_intake",
+      intake_items: "intake_items_selected",
+      shop_lead: "shop_text_lead",
+      estimate_lead: "estimate_text_lead",
+    }[kind];
     w.gtag("event", eventName, { event_category: "conversion", page_path: page, value: 1, currency: "USD", transport_type: "beacon" });
     if (kind === "booking") w.gtag("event", "generate_lead", { page_path: page, lead_type: "booked_call" });
+    if (kind === "shop_lead" || kind === "estimate_lead") w.gtag("event", "generate_lead", { page_path: page, lead_type: kind, value: 1, currency: "USD" });
 
-    const label = kind === "booking" ? tracking.googleAdsBookingLabel : kind === "call" ? tracking.googleAdsCallLabel : "";
+    const labels: Partial<Record<ConversionKind, string>> = {
+      booking: tracking.googleAdsBookingLabel,
+      call: tracking.googleAdsCallLabel,
+      shop_lead: tracking.googleAdsShopLabel,
+      estimate_lead: tracking.googleAdsEstimateLabel,
+    };
+    const label = labels[kind] ?? "";
     if (label) {
       w.gtag("event", "conversion", {
         send_to: label.includes("/") ? label : `${tracking.googleTagId}/${label}`,
@@ -96,12 +110,20 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string) {
   } else if (kind === "call") {
     metaEvent("Contact", { content_name: "Phone call", lead_intent: intent });
     metaEvent("Lead", { content_name: "Phone call", lead_type: "call", lead_intent: intent });
+  } else if (kind === "shop_lead" || kind === "estimate_lead") {
+    const shop = kind === "shop_lead";
+    metaEvent("Lead", { content_name: shop ? "Shop intake text" : "Estimate intake text", lead_type: kind, lead_intent: shop ? "buy_or_sell_appliance" : "appliance_repair", value: 1, currency: "USD" }, dedupeKey);
+    metaEvent("Contact", { content_name: shop ? "Shop intake text" : "Estimate intake text" }, dedupeKey);
+  } else if (kind === "intake_items") {
+    metaEvent("AddToCart", { content_name: "Appliance selection", lead_intent: intent });
+  } else if (kind === "intake_start") {
+    metaEvent("InitiateCheckout", { content_name: "Intake opened", lead_intent: intent });
   } else {
     metaEvent("InitiateCheckout", { content_name: "Booking opened", lead_intent: intent });
   }
 
   if (w.uetq) {
-    const action = kind === "booking" ? "schedule" : kind === "call" ? "call" : "begin_booking";
+    const action = { booking: "schedule", call: "call", booking_click: "begin_booking", intake_start: "begin_intake", intake_items: "intake_items", shop_lead: "shop_lead", estimate_lead: "estimate_lead" }[kind];
     w.uetq.push("event", action, { event_category: "conversion", event_label: page, event_value: 1 });
   }
 

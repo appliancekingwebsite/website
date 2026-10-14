@@ -26,7 +26,7 @@ export function SiteFooter() {
           <Link href="/services">Services</Link>
           <Link href="/residential-services">Residential</Link>
           <Link href="/commercial-services">Commercial</Link>
-          <Link href="/book">Book a call</Link>
+          <Link href="/book">Schedule an estimate</Link>
         </div>
         <div>
           <p className="footer-heading">Popular work</p>

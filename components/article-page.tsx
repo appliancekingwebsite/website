@@ -60,7 +60,7 @@ export function ArticlePage({ article }: { article: ArticleData }) {
               <p className="section-number">BOOKMARK THIS</p>
               <strong>Diagnose before you decide.</strong>
               <p>One symptom can have several causes. Compare the confirmed scope with the complete replacement cost.</p>
-              <Link className="button button--primary" href="/book">Book an estimate</Link>
+              <Link className="button button--primary" href="/book">Free Estimate</Link>
             </aside>
           </div>
         </article>

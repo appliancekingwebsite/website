@@ -30,7 +30,7 @@ export function ServicePage({ service }: { service: ServicePageData }) {
                 <p className="direct-answer">{service.directAnswer}</p>
                 <div className="hero-actions">
                   <Link className="button button--primary" href="/book">
-                    Book an estimate <ArrowRight aria-hidden="true" size={18} />
+                    Free Estimate <ArrowRight aria-hidden="true" size={18} />
                   </Link>
                   <Link className="text-link" href="/service-areas">
                     Check the service area

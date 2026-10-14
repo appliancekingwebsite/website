@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { IntakeButton } from "@/components/intake-button";
 import { business } from "@/lib/business";
 import { services } from "@/lib/content";
 
@@ -141,9 +142,12 @@ export function SiteHeader() {
           <a className="header-phone" href={business.phoneHref}>
             <Phone aria-hidden="true" size={17} /> <span>{business.phoneDisplay}</span>
           </a>
-          <Link className="button button--primary button--compact" href="/book" data-book>
-            Book a call
-          </Link>
+          <IntakeButton mode="estimate" className="button button--outline button--compact header-estimate">
+            Free Estimate
+          </IntakeButton>
+          <IntakeButton mode="shop" className="button button--primary button--compact header-shop">
+            Shop Appliances
+          </IntakeButton>
         </div>
         <Dialog.Root open={menuOpen} onOpenChange={setMenuOpen}>
           <Dialog.Trigger className="mobile-menu-trigger" aria-label="Open navigation">
@@ -175,9 +179,12 @@ export function SiteHeader() {
                 <a className="button button--outline" href={business.phoneHref}>
                   Call {business.phoneDisplay}
                 </a>
-                <Link className="button button--primary" href="/book" onClick={() => setMenuOpen(false)}>
-                  Book an estimate
-                </Link>
+                <IntakeButton mode="shop" className="button button--primary" onClick={() => setMenuOpen(false)}>
+                  Shop Appliances
+                </IntakeButton>
+                <IntakeButton mode="estimate" className="button button--outline" onClick={() => setMenuOpen(false)}>
+                  Free Estimate
+                </IntakeButton>
               </div>
             </Dialog.Content>
           </Dialog.Portal>

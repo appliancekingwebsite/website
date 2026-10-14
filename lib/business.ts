@@ -5,6 +5,7 @@ export const business = {
     "Buy used washers, dryers, ovens and refrigerators, get appliances repaired, and book delivery or pickup in Macon, Georgia and cities within about 40 miles.",
   phoneDisplay: "478-273-7539",
   phoneHref: "tel:+14782737539",
+  phoneSms: "sms:+14782737539",
   bookingUrl: "https://calendly.com/applianceking-estimate/estimate",
   bookingEmbedUrl:
     "https://calendly.com/applianceking-estimate/estimate?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=12171f&primary_color=12a150",
@@ -59,6 +60,8 @@ export const tracking = {
   microsoftUetId: process.env.NEXT_PUBLIC_UET_TAG_ID ?? "",
   clarityId: process.env.NEXT_PUBLIC_CLARITY_ID ?? "",
   googleAdsBookingLabel: process.env.NEXT_PUBLIC_GADS_BOOKING_LABEL ?? "",
+  googleAdsShopLabel: process.env.NEXT_PUBLIC_GADS_SHOP_LABEL ?? "",
+  googleAdsEstimateLabel: process.env.NEXT_PUBLIC_GADS_ESTIMATE_LABEL ?? "",
   googleAdsCallLabel: process.env.NEXT_PUBLIC_GADS_CALL_LABEL ?? "hTi1CLihlp0dEOS3n8RD",
 } as const;
 

@@ -1,16 +1,15 @@
 "use client";
 
-import { CalendarDays, Phone } from "lucide-react";
-import Link from "next/link";
+import { ClipboardCheck, Phone, ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { IntakeButton } from "@/components/intake-button";
 import { business } from "@/lib/business";
 
 export function MobileActions() {
   const [calendarVisible, setCalendarVisible] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
-  const scheduleHref = pathname === "/" ? "#booking" : "/book";
   const hidden = pathname === "/book" || (pathname === "/" && calendarVisible);
 
   useEffect(() => {
@@ -59,10 +58,14 @@ export function MobileActions() {
       aria-label="Quick actions"
       aria-hidden={hidden}
     >
-      <Link href={scheduleHref} aria-label="Schedule" data-book>
-        <CalendarDays aria-hidden="true" size={20} />
-        <span>Book a call</span>
-      </Link>
+      <IntakeButton mode="shop" className="mobile-actions__shop">
+        <ShoppingBag aria-hidden="true" size={20} />
+        <span>Shop</span>
+      </IntakeButton>
+      <IntakeButton mode="estimate" className="mobile-actions__estimate">
+        <ClipboardCheck aria-hidden="true" size={20} />
+        <span>Free Estimate</span>
+      </IntakeButton>
       <a href={business.phoneHref} aria-label="Call">
         <Phone aria-hidden="true" size={22} />
       </a>

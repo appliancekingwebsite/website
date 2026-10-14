@@ -4,7 +4,7 @@ import { tracking } from "@/lib/business";
 
 export const runtime = "nodejs";
 
-const ALLOWED = new Set(["PageView", "Lead", "Schedule", "Contact", "ViewContent", "InitiateCheckout"]);
+const ALLOWED = new Set(["PageView", "Lead", "Schedule", "Contact", "ViewContent", "InitiateCheckout", "AddToCart"]);
 
 type Body = {
   event_name?: string;

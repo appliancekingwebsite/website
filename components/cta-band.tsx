@@ -1,5 +1,5 @@
 import { ArrowUpRight, Phone } from "lucide-react";
-import Link from "next/link";
+import { IntakeButton } from "@/components/intake-button";
 import { business } from "@/lib/business";
 
 export function CtaBand({
@@ -21,9 +21,9 @@ export function CtaBand({
           <Phone aria-hidden="true" size={18} />
           Call {business.phoneDisplay}
         </a>
-        <Link className="button button--outline-light" href="/book">
-          Book an estimate <ArrowUpRight aria-hidden="true" size={18} />
-        </Link>
+        <IntakeButton mode="estimate" className="button button--outline-light">
+          Free Estimate <ArrowUpRight aria-hidden="true" size={18} />
+        </IntakeButton>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { ConversionListeners } from "@/components/conversion-listeners";
+import { IntakeModal } from "@/components/intake-modal";
 import { MobileActions } from "@/components/mobile-actions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <SiteFooter />
         <MobileActions />
+        <IntakeModal />
         <ConversionListeners />
       </body>
     </html>

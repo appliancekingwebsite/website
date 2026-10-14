@@ -108,7 +108,7 @@ export function ShopPage({ category }: { category: ShopCategory }) {
         <section className="ak-section ak-wrap">
           <div className="ak-cta">
             <h2>Ready to pick one out?</h2>
-            <p>Book a call or phone Appliance King to confirm stock and set up delivery or pickup.</p>
+            <p>Tap Shop Appliances or call Appliance King to confirm stock and set up delivery or pickup.</p>
             <ActionRow align="center" />
           </div>
         </section>

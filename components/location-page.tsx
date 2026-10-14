@@ -22,7 +22,7 @@ export function LocationPage({ location }: { location: LocationPageData }) {
                 <h1>{location.h1}</h1>
                 <p className="direct-answer">{location.directAnswer}</p>
                 <Link className="button button--primary" href="/book">
-                  Book an estimate <ArrowRight aria-hidden="true" size={18} />
+                  Free Estimate <ArrowRight aria-hidden="true" size={18} />
                 </Link>
               </div>
               <ServiceAreaMap />

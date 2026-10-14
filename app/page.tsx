@@ -40,12 +40,12 @@ export default function HomePage() {
               </p>
               <h1>
                 Buy, sell &amp; <span className="ak-grad-blue">repair appliances</span> in{" "}
-                <span className="ak-grad-orange">Macon, GA.</span>
+                <span className="ak-grad-blue">Macon, GA.</span>
               </h1>
               <p className="ak-lede">
                 Used washers, dryers, ovens and refrigerators on the floor, repairs for what you already own, and
-                delivery or pickup to Macon and cities within about {business.serviceRadiusMiles} miles. Book a call or
-                phone us.
+                delivery or pickup to Macon and cities within about {business.serviceRadiusMiles} miles. Tap Shop, tell us
+                what you need, and text us in under a minute.
               </p>
               <ActionRow />
               <ul className="ak-trust">
@@ -129,7 +129,7 @@ export default function HomePage() {
           <div className="ak-wrap">
             <SectionHead eyebrow="How it works" title="How do you get started?" />
             <ol className="ak-steps">
-              <li><span>1</span><div><strong>Book or call</strong><p>Pick a time on the calendar or phone {business.phoneDisplay}.</p></div></li>
+              <li><span>1</span><div><strong>Shop or get an estimate</strong><p>Tap a button, pick your appliances, and text us. Or call {business.phoneDisplay}.</p></div></li>
               <li><span>2</span><div><strong>Tell us what you need</strong><p>An appliance to buy, a repair, delivery, or pickup.</p></div></li>
               <li><span>3</span><div><strong>We confirm the details</strong><p>Address, access, and timing are confirmed before we show up.</p></div></li>
             </ol>
@@ -157,8 +157,8 @@ export default function HomePage() {
         <section className="ak-section ak-section--panel" id="booking">
           <div className="ak-wrap ak-book">
             <div>
-              <p className="ak-eyebrow"><CalendarDays aria-hidden="true" size={15} /> Book a call</p>
-              <h2>Pick a time that works for you.</h2>
+              <p className="ak-eyebrow"><CalendarDays aria-hidden="true" size={15} /> Free estimate</p>
+              <h2>Prefer to pick a time?</h2>
               <p className="ak-lede">
                 Choose an open slot on the calendar, or call {business.phoneDisplay}. Tell us the appliance, your city,
                 and whether you want to buy, repair, or arrange delivery.

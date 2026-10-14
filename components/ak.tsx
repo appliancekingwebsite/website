@@ -1,6 +1,7 @@
-import { ArrowRight, CalendarDays, MapPin, Phone } from "lucide-react";
+import { ArrowRight, ClipboardCheck, MapPin, Phone, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { IntakeButton } from "@/components/intake-button";
 import { business } from "@/lib/business";
 import { locations } from "@/lib/content";
 import type { ShopImage } from "@/lib/shop";
@@ -60,14 +61,18 @@ export function CityChips({ limit }: { limit?: number }) {
 export function ActionRow({ align = "start" }: { align?: "start" | "center" }) {
   return (
     <div className={`ak-actions ak-actions--${align}`}>
-      <Link className="ak-btn ak-btn--primary" href="/book" data-book>
-        <CalendarDays aria-hidden="true" size={19} />
-        Book a call
+      <IntakeButton mode="shop" className="ak-btn ak-btn--primary">
+        <ShoppingBag aria-hidden="true" size={19} />
+        Shop Appliances
         <ArrowRight aria-hidden="true" size={18} />
-      </Link>
+      </IntakeButton>
+      <IntakeButton mode="estimate" className="ak-btn ak-btn--outline">
+        <ClipboardCheck aria-hidden="true" size={19} />
+        Free Estimate
+      </IntakeButton>
       <a className="ak-btn ak-btn--ghost" href={business.phoneHref}>
         <Phone aria-hidden="true" size={19} />
-        Call {business.phoneDisplay}
+        {business.phoneDisplay}
       </a>
     </div>
   );
