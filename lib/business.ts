@@ -59,14 +59,13 @@ export const tracking = {
   microsoftUetId: process.env.NEXT_PUBLIC_UET_TAG_ID ?? "",
   clarityId: process.env.NEXT_PUBLIC_CLARITY_ID ?? "",
   googleAdsBookingLabel: process.env.NEXT_PUBLIC_GADS_BOOKING_LABEL ?? "",
-  googleAdsCallLabel: process.env.NEXT_PUBLIC_GADS_CALL_LABEL ?? "",
+  googleAdsCallLabel: process.env.NEXT_PUBLIC_GADS_CALL_LABEL ?? "hTi1CLihlp0dEOS3n8RD",
 } as const;
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "http://localhost:3000";
+  (process.env.NODE_ENV === "production" ? "https://appliancekingrepair.com" : "http://localhost:3000");
 
 export const hasProductionDomain =
-  Boolean(process.env.NEXT_PUBLIC_SITE_URL) &&
   !siteUrl.includes("example.com") &&
   !siteUrl.includes("localhost");

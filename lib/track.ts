@@ -84,7 +84,7 @@ export function trackConversion(kind: ConversionKind, dedupeKey?: string) {
         transport_type: "beacon",
         value: 1,
         currency: "USD",
-        transaction_id: dedupeKey ?? "",
+        ...(dedupeKey ? { transaction_id: dedupeKey } : {}),
       });
     }
   }
