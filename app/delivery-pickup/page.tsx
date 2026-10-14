@@ -9,7 +9,7 @@ import { deliveryGraph, pageMetadata } from "@/lib/seo";
 import type { FaqItem } from "@/lib/content";
 
 export const metadata = pageMetadata({
-  title: "Appliance Delivery & Pickup in Macon, GA | Appliance King",
+  title: "Delivery & Pickup in Macon, GA | Appliance King",
   description:
     "Appliance delivery and pickup in Macon, GA and cities within about 40 miles, including Warner Robins, Perry, Fort Valley and Milledgeville.",
   path: "/delivery-pickup",

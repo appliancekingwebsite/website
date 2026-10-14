@@ -188,7 +188,7 @@ export const shopCategories: ShopCategory[] = [
     name: "Used Ovens & Ranges",
     short: "Electric ranges, glass-top and coil-top",
     h1: "Used Ovens and Ranges for Sale in Macon, GA",
-    title: "Used Ovens & Ranges for Sale in Macon, GA | Appliance King",
+    title: "Used Ovens & Ranges in Macon, GA | Appliance King",
     description:
       "Shop used electric ranges, ovens and stoves in Macon, GA, in black, white and stainless. Delivery and pickup within about 40 miles.",
     directAnswer:

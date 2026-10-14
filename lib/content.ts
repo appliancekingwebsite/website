@@ -907,7 +907,7 @@ function extendedCity(c: ExtendedCity): LocationPageData {
     city: c.city,
     county: c.county,
     h1: `Used Appliances and Appliance Repair in ${c.city}, GA`,
-    title: `Used Appliances & Repair in ${c.city}, GA | Appliance King`,
+    title: `Appliance Repair & Used Sales in ${c.city}, GA | Appliance King`,
     description: `Buy used washers, dryers, ovens and refrigerators, book appliance repair, and arrange delivery or pickup in ${c.city}, GA with Appliance King.`,
     directAnswer: `Appliance King serves ${c.city} (${c.county}) from its Macon base. You can buy used washers, dryers, ovens and ranges, and refrigerators, book appliance repair, and arrange delivery or pickup. ${c.city} is inside the roughly 40-mile delivery and pickup radius, with the exact address and item confirmed when you call or book.`,
     localNote: c.context,
