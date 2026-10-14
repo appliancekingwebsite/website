@@ -4,7 +4,7 @@ import { tracking } from "@/lib/business";
 
 export const runtime = "nodejs";
 
-const ALLOWED = new Set(["Lead", "Schedule", "Contact", "ViewContent", "InitiateCheckout"]);
+const ALLOWED = new Set(["PageView", "Lead", "Schedule", "Contact", "ViewContent", "InitiateCheckout"]);
 
 type Body = {
   event_name?: string;
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "bad event" }, { status: 400 });
   }
 
-  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || undefined;
   const payload = {
     data: [
       {

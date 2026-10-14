@@ -14,6 +14,8 @@ export function ConversionListeners() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // PageView on every route (initial load and client-side navigation), mirrored to the Conversions API with one shared event_id.
+    metaEvent("PageView", {}, `pv-${pathname}-${Date.now()}`);
     if (/^\/(used-appliances\/|services\/|delivery-pickup)/.test(pathname)) {
       metaEvent("ViewContent", { content_name: pathname, content_category: pathname.startsWith("/services") ? "appliance_repair" : "used_appliances" }, `view-${pathname}`);
     }
