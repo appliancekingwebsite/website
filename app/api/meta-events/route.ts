@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { tracking } from "@/lib/business";
 
@@ -9,6 +10,7 @@ type Body = {
   event_name?: string;
   event_id?: string;
   event_source_url?: string;
+  external_id?: string;
   fbp?: string;
   fbc?: string;
   custom_data?: Record<string, string | number | boolean>;
@@ -45,6 +47,7 @@ export async function POST(request: Request) {
         user_data: {
           client_ip_address: forwarded,
           client_user_agent: request.headers.get("user-agent") ?? undefined,
+          external_id: body.external_id ? [createHash("sha256").update(body.external_id).digest("hex")] : undefined,
           fbp: body.fbp,
           fbc: body.fbc,
         },

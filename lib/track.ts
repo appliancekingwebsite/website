@@ -15,6 +15,20 @@ function cookie(name: string) {
   return document.cookie.split("; ").find((c) => c.startsWith(`${name}=`))?.split("=")[1];
 }
 
+/** Stable anonymous visitor id (hashed server-side) so Meta can tie repeat visits and the lead together. */
+function externalId() {
+  try {
+    let id = localStorage.getItem("ak_ext_id");
+    if (!id) {
+      id = newId();
+      localStorage.setItem("ak_ext_id", id);
+    }
+    return id;
+  } catch {
+    return undefined;
+  }
+}
+
 function newId() {
   return typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
 }
@@ -30,6 +44,7 @@ export function metaEvent(name: string, data: Record<string, string | number | b
     event_name: name,
     event_id: eventId,
     event_source_url: window.location.href,
+    external_id: externalId(),
     fbp: cookie("_fbp"),
     fbc: cookie("_fbc") ?? (fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined),
     custom_data: data,
