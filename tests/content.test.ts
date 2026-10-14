@@ -12,7 +12,7 @@ const unsupportedClaims = [
 describe("public content inventory", () => {
   it("ships the planned service and location pages with unique search fields", () => {
     expect(services).toHaveLength(13);
-    expect(locations).toHaveLength(5);
+    expect(locations).toHaveLength(12);
     expect(new Set(services.map((item) => item.slug)).size).toBe(services.length);
     expect(new Set(services.map((item) => item.h1)).size).toBe(services.length);
     expect(new Set(locations.map((item) => item.h1)).size).toBe(locations.length);

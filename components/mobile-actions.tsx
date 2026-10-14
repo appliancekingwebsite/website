@@ -42,13 +42,11 @@ export function MobileActions() {
         : null;
     bookingTargets.forEach((target) => observer?.observe(target));
     const frame = window.requestAnimationFrame(updateFromLayout);
-    const interval = window.setInterval(updateFromLayout, 250);
     window.addEventListener("scroll", updateFromLayout, { passive: true });
     window.addEventListener("resize", updateFromLayout);
     return () => {
       observer?.disconnect();
       window.cancelAnimationFrame(frame);
-      window.clearInterval(interval);
       window.removeEventListener("scroll", updateFromLayout);
       window.removeEventListener("resize", updateFromLayout);
     };
@@ -61,13 +59,12 @@ export function MobileActions() {
       aria-label="Quick actions"
       aria-hidden={hidden}
     >
-      <Link href={scheduleHref}>
-        <CalendarDays aria-hidden="true" size={19} />
-        Schedule
+      <Link href={scheduleHref} aria-label="Schedule" data-book>
+        <CalendarDays aria-hidden="true" size={20} />
+        <span>Book a call</span>
       </Link>
-      <a href={business.phoneHref}>
-        <Phone aria-hidden="true" size={19} />
-        Call
+      <a href={business.phoneHref} aria-label="Call">
+        <Phone aria-hidden="true" size={22} />
       </a>
     </nav>
   );

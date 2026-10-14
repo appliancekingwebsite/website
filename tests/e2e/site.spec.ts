@@ -16,6 +16,11 @@ const routes = [
   "/privacy",
   "/terms",
   "/used-appliances",
+  "/delivery-pickup",
+  "/used-appliances/washers",
+  "/used-appliances/dryers",
+  "/used-appliances/ovens-ranges",
+  "/used-appliances/refrigerators",
   "/sell-your-appliance",
   "/service-areas",
   "/articles",
@@ -34,7 +39,7 @@ const routes = [
     "landscaping-property-maintenance",
     "commercial-property-maintenance",
   ].map((slug) => `/services/${slug}`),
-  ...["macon-ga", "warner-robins-ga", "gray-ga", "byron-ga", "forsyth-ga"].map(
+  ...["macon-ga", "warner-robins-ga", "gray-ga", "byron-ga", "forsyth-ga", "perry-ga", "fort-valley-ga", "milledgeville-ga", "centerville-ga", "barnesville-ga", "jeffersonville-ga", "cochran-ga"].map(
     (slug) => `/service-areas/${slug}`,
   ),
   ...[

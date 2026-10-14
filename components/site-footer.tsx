@@ -12,15 +12,21 @@ export function SiteFooter() {
           <div>
             <strong>Appliance King</strong>
             <p>Buy · Sell · Fix</p>
-            <p>Macon, Georgia</p>
+            <p>Macon, Georgia · delivery &amp; pickup within about 40 miles</p>
           </div>
         </div>
         <div>
           <p className="footer-heading">Start here</p>
+          <Link href="/used-appliances">Used appliances</Link>
+          <Link href="/used-appliances/washers">Used washers</Link>
+          <Link href="/used-appliances/dryers">Used dryers</Link>
+          <Link href="/used-appliances/ovens-ranges">Used ovens &amp; ranges</Link>
+          <Link href="/used-appliances/refrigerators">Used refrigerators</Link>
+          <Link href="/delivery-pickup">Delivery &amp; pickup</Link>
           <Link href="/services">Services</Link>
           <Link href="/residential-services">Residential</Link>
           <Link href="/commercial-services">Commercial</Link>
-          <Link href="/book">Book an estimate</Link>
+          <Link href="/book">Book a call</Link>
         </div>
         <div>
           <p className="footer-heading">Popular work</p>

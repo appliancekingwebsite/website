@@ -892,6 +892,130 @@ export const locations: LocationPageData[] = [
   },
 ];
 
+type ExtendedCity = {
+  slug: string;
+  city: string;
+  county: string;
+  context: string;
+  nearby: string[];
+  extraQuestion: FaqItem;
+};
+
+function extendedCity(c: ExtendedCity): LocationPageData {
+  return {
+    slug: c.slug,
+    city: c.city,
+    county: c.county,
+    h1: `Used Appliances and Appliance Repair in ${c.city}, GA`,
+    title: `Used Appliances & Repair in ${c.city}, GA | Appliance King`,
+    description: `Buy used washers, dryers, ovens and refrigerators, book appliance repair, and arrange delivery or pickup in ${c.city}, GA with Appliance King.`,
+    directAnswer: `Appliance King serves ${c.city} (${c.county}) from its Macon base. You can buy used washers, dryers, ovens and ranges, and refrigerators, book appliance repair, and arrange delivery or pickup. ${c.city} is inside the roughly 40-mile delivery and pickup radius, with the exact address and item confirmed when you call or book.`,
+    localNote: c.context,
+    nearby: c.nearby,
+    faq: [
+      {
+        question: `Does Appliance King deliver used appliances to ${c.city}?`,
+        answer: `Yes. ${c.city} is within about 40 miles of Macon, so delivery and pickup can be arranged. Call 478-273-7539 with the appliance and your address to confirm a time.`,
+      },
+      c.extraQuestion,
+    ],
+  };
+}
+
+locations.push(
+  extendedCity({
+    slug: "perry-ga",
+    city: "Perry",
+    county: "Houston County",
+    context:
+      "Perry sits along I-75 south of Macon, so deliveries and pickups follow the same corridor as Warner Robins and Centerville requests. Include your neighborhood or ZIP when you book.",
+    nearby: ["Warner Robins", "Centerville", "Fort Valley"],
+    extraQuestion: {
+      question: "Can I book an appliance repair in Perry, GA?",
+      answer:
+        "Yes. Washer, dryer, refrigerator, dishwasher, and range repairs can be booked for Perry. Describe the appliance and the problem when you book on the calendar or call.",
+    },
+  }),
+  extendedCity({
+    slug: "fort-valley-ga",
+    city: "Fort Valley",
+    county: "Peach County",
+    context:
+      "Fort Valley is in Peach County, west of Macon. Landlords, students, and homeowners there can combine a used-appliance purchase with delivery in one trip.",
+    nearby: ["Perry", "Byron", "Macon"],
+    extraQuestion: {
+      question: "Can I buy a washer and dryer set for a rental in Fort Valley?",
+      answer:
+        "Matching washer and dryer sets change from week to week. Call to ask what is on the floor, then arrange delivery to your Fort Valley address.",
+    },
+  }),
+  extendedCity({
+    slug: "milledgeville-ga",
+    city: "Milledgeville",
+    county: "Baldwin County",
+    context:
+      "Milledgeville is at the outer end of the normal radius, northeast of Macon. Share your exact address and the appliance details so delivery, pickup, or a repair visit can be scheduled in one trip.",
+    nearby: ["Gray", "Irwinton", "Macon"],
+    extraQuestion: {
+      question: "Is Milledgeville inside the 40-mile service radius?",
+      answer:
+        "Milledgeville is within the roughly 40-mile area Appliance King serves from Macon. Call 478-273-7539 to confirm your address and a delivery or repair time.",
+    },
+  }),
+  extendedCity({
+    slug: "centerville-ga",
+    city: "Centerville",
+    county: "Houston County",
+    context:
+      "Centerville is a short drive from Macon and sits next to Warner Robins, so delivery and pickup requests there are among the easiest to schedule.",
+    nearby: ["Warner Robins", "Byron", "Perry"],
+    extraQuestion: {
+      question: "What appliances can I buy in Centerville through Appliance King?",
+      answer:
+        "Appliance King sells used washers, dryers, ovens and ranges, and refrigerators. Inventory changes, so call to confirm what is available before you arrange delivery.",
+    },
+  }),
+  extendedCity({
+    slug: "barnesville-ga",
+    city: "Barnesville",
+    county: "Lamar County",
+    context:
+      "Barnesville is north of Macon along I-75 in Lamar County. Provide your address and the appliance you need so delivery and pickup can be planned around the route.",
+    nearby: ["Forsyth", "Jackson", "Gordon"],
+    extraQuestion: {
+      question: "Can Appliance King pick up my old appliance in Barnesville?",
+      answer:
+        "Pickup is available within the service radius. Tell Appliance King the appliance type, model, and access details, and the next step will be confirmed by phone.",
+    },
+  }),
+  extendedCity({
+    slug: "jeffersonville-ga",
+    city: "Jeffersonville",
+    county: "Twiggs County",
+    context:
+      "Jeffersonville is the Twiggs County seat, southeast of Macon. Rural driveways and long roads are common, so mention access details when you book.",
+    nearby: ["Gordon", "Irwinton", "Macon"],
+    extraQuestion: {
+      question: "How do I schedule appliance repair in Jeffersonville?",
+      answer:
+        "Pick an open time on the booking calendar or call 478-273-7539. Describe the appliance, the symptom, and any access notes for the property.",
+    },
+  }),
+  extendedCity({
+    slug: "cochran-ga",
+    city: "Cochran",
+    county: "Bleckley County",
+    context:
+      "Cochran is in Bleckley County, south of Macon along US-23 and I-16. It is near the edge of the normal radius, so confirm your address and the item before scheduling delivery or pickup.",
+    nearby: ["Gordon", "Jeffersonville", "Macon"],
+    extraQuestion: {
+      question: "Is Cochran within the delivery area?",
+      answer:
+        "Cochran is within about 40 miles of Macon. Call to confirm your address, the appliance, and the delivery or pickup time.",
+    },
+  }),
+);
+
 export const locationBySlug = Object.fromEntries(
   locations.map((location) => [location.slug, location]),
 ) as Record<string, LocationPageData>;

@@ -9,9 +9,10 @@
 - Booking: `https://calendly.com/applianceking-estimate/estimate`
 - Primary positioning: appliance repair
 - Supporting work: appliance installation, dryer vent cleaning/repair, handyman work, minor electrical tasks, landscaping/property maintenance, residential and commercial maintenance
-- Commerce: buys and sells used appliances
+- Commerce: buys and sells used appliances (washers, dryers, ovens/ranges, refrigerators); delivery and pickup; repairs
+- Tracking: Google tag AW-18128296932, Meta dataset/pixel 4472553883061795 (account "Appliance King Repair"), Microsoft UET via NEXT_PUBLIC_UET_TAG_ID
 - Credentials: insured; verified Google Business Profile
-- Normal market: Macon and nearby communities roughly 25 miles out
+- Normal market: Macon and cities within about 40 miles (owner-confirmed 2026-10-14); delivery and pickup offered across that radius
 - Atlanta: larger or special projects by request, not routine local targeting
 
 ## Claim Guardrails

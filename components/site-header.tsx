@@ -39,6 +39,8 @@ const serviceGroups = [
 
 const primaryLinks = [
   { href: "/", label: "Home" },
+  { href: "/used-appliances", label: "Shop Used" },
+  { href: "/delivery-pickup", label: "Delivery & Pickup" },
   { href: "/residential-services", label: "Residential" },
   { href: "/commercial-services", label: "Commercial" },
   { href: "/service-areas", label: "Service Areas" },
@@ -114,7 +116,7 @@ export function SiteHeader() {
               <NavigationMenu.Content className="buy-sell-menu">
                 <Link href="/used-appliances">
                   <strong>Used Appliances</strong>
-                  <span>Ask what is currently available.</span>
+                  <span>Washers, dryers, ovens, refrigerators.</span>
                 </Link>
                 <Link href="/sell-your-appliance">
                   <strong>Sell Your Appliance</strong>
@@ -139,8 +141,8 @@ export function SiteHeader() {
           <a className="header-phone" href={business.phoneHref}>
             <Phone aria-hidden="true" size={17} /> <span>{business.phoneDisplay}</span>
           </a>
-          <Link className="button button--primary button--compact" href="/book">
-            Book estimate
+          <Link className="button button--primary button--compact" href="/book" data-book>
+            Book a call
           </Link>
         </div>
         <Dialog.Root open={menuOpen} onOpenChange={setMenuOpen}>

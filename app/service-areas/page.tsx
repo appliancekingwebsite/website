@@ -8,9 +8,9 @@ import { locations } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Appliance King Service Areas Near Macon, GA",
+  title: "Service Areas Within 40 Miles of Macon, GA | Appliance King",
   description:
-    "See normal Appliance King service communities near Macon, including Warner Robins, Gray, Byron, Forsyth, and nearby areas.",
+    "Appliance King delivers, picks up and repairs appliances in Macon and cities within about 40 miles, including Warner Robins, Perry and Milledgeville.",
   path: "/service-areas",
 });
 
@@ -23,11 +23,12 @@ export default function ServiceAreasPage() {
           <div className="page-hero__grid">
             <div>
               <p className="eyebrow">Local coverage / Central Georgia</p>
-              <h1>Appliance and handyman service areas near Macon, GA.</h1>
+              <h1>Appliance delivery, pickup and repair within 40 miles of Macon, GA.</h1>
               <p className="direct-answer">
-                Appliance King normally serves Macon and nearby communities including Warner Robins, Gray, Byron,
-                Forsyth, Centerville, Lizella, Bolingbroke, Juliette, and Dry Branch. Location and scheduling are
-                confirmed per request. Atlanta is considered only for larger or special projects by request.
+                Appliance King delivers, picks up, and repairs appliances in Macon and cities within about 40 miles,
+                including Warner Robins, Perry, Fort Valley, Milledgeville, Barnesville, Byron, Forsyth, Gray, and
+                Centerville. Address and scheduling are confirmed per request. Atlanta is considered only for larger or
+                special projects by request.
               </p>
             </div>
             <ServiceAreaMap />
@@ -45,9 +46,9 @@ export default function ServiceAreasPage() {
           ))}
         </div>
         <div className="coverage-note">
-          <h2>Additional nearby communities</h2>
-          <p>{business.normalAreas.slice(5).join(" · ")}</p>
-          <p>These communities appear on the coverage hub rather than duplicated location pages. Call to confirm the address and schedule.</p>
+          <h2>All cities in the delivery and pickup radius</h2>
+          <p>{business.normalAreas.join(" · ")}</p>
+          <p>Cities without their own page are covered from this hub. Call {business.phoneDisplay} to confirm your address and schedule.</p>
         </div>
       </section>
       <div className="content-shell"><CtaBand /></div>
