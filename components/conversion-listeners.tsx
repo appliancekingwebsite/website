@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { tracking } from "@/lib/business";
-import { initMetaMatching, metaEvent, trackConversion } from "@/lib/track";
+import { collectMetaParams, metaEvent, trackConversion } from "@/lib/track";
 
 /**
  * Site-wide conversion listeners (no per-button wiring needed):
@@ -15,7 +14,7 @@ export function ConversionListeners() {
   const pathname = usePathname();
 
   useEffect(() => {
-    initMetaMatching(tracking.metaPixelId);
+    collectMetaParams();
   }, []);
 
   useEffect(() => {

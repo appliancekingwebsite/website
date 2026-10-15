@@ -34,11 +34,26 @@ function newId() {
 }
 
 /** Sends one Meta event through the browser pixel and the server (Conversions API) with a shared event_id. */
-/** Passes the anonymous visitor id to the Meta pixel (advanced matching) so browser events match the server events. */
-export function initMetaMatching(pixelId: string) {
-  const w = window as Win;
-  const id = externalId();
-  if (id && typeof w.fbq === "function") w.fbq("init", pixelId, { external_id: id });
+function setCookie(name: string, value: string) {
+  const parts = window.location.hostname.split(".");
+  const domain = parts.length >= 2 ? `; domain=.${parts.slice(-2).join(".")}` : "";
+  document.cookie = `${name}=${value}; max-age=${90 * 86400}; path=/; SameSite=Lax${domain}`;
+}
+
+/**
+ * First-party equivalent of Meta's Parameter Builder: stores the ad click id as a correctly formatted
+ * _fbc cookie (fb.1.<ms>.<fbclid>, case preserved) and makes sure _fbp exists, so every Conversions API
+ * event carries fbc/fbp even when the pixel script is slow or blocked.
+ */
+export function collectMetaParams() {
+  if (typeof window === "undefined") return;
+  try {
+    const fbclid = new URLSearchParams(window.location.search).get("fbclid");
+    if (fbclid && !cookie("_fbc")?.endsWith(`.${fbclid}`)) setCookie("_fbc", `fb.1.${Date.now()}.${fbclid}`);
+    if (!cookie("_fbp")) setCookie("_fbp", `fb.1.${Date.now()}.${Math.floor(Math.random() * 2147483647)}`);
+  } catch {
+    /* tracking must never break the page */
+  }
 }
 
 export type MetaUser = { fn?: string; ct?: string; zp?: string };
@@ -47,15 +62,15 @@ export function metaEvent(name: string, data: Record<string, string | number | b
   if (typeof window === "undefined") return;
   const w = window as Win;
   const eventId = seed ? `${name}-${seed}` : newId();
+  collectMetaParams();
   if (typeof w.fbq === "function") w.fbq("track", name, data, { eventID: eventId });
-  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
   const body = JSON.stringify({
     event_name: name,
     event_id: eventId,
     event_source_url: window.location.href,
     external_id: externalId(),
     fbp: cookie("_fbp"),
-    fbc: cookie("_fbc") ?? (fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined),
+    fbc: cookie("_fbc"),
     custom_data: data,
     user,
   });

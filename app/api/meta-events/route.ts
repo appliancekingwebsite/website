@@ -41,6 +41,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "bad event" }, { status: 400 });
   }
 
+  const cookies = request.headers.get("cookie") ?? "";
+  const fromCookie = (n: string) => cookies.split("; ").find((c) => c.startsWith(`${n}=`))?.slice(n.length + 1);
   const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || undefined;
   const payload = {
     data: [
@@ -54,8 +56,8 @@ export async function POST(request: Request) {
           client_ip_address: forwarded,
           client_user_agent: request.headers.get("user-agent") ?? undefined,
           external_id: body.external_id ? [createHash("sha256").update(body.external_id).digest("hex")] : undefined,
-          fbp: body.fbp,
-          fbc: body.fbc,
+          fbp: body.fbp || fromCookie("_fbp"),
+          fbc: body.fbc || fromCookie("_fbc"),
           fn: hash(body.user?.fn?.split(" ")[0]),
           ct: hash(body.user?.ct?.replace(/[^a-z]/gi, "")),
           zp: hash(body.user?.zp?.slice(0, 5)),
