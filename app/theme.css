@@ -508,3 +508,7 @@ a, button, summary, [role="button"] { touch-action: manipulation; }
 }
 .visit { display: grid; gap: 10px; margin: 18px 0 0; }
 .visit a { display: inline-flex; align-items: center; gap: 8px; color: var(--sky); font-weight: 700; text-decoration: none; }
+
+/* Desktop books via Calendly; mobile keeps text-based intake */
+@media (min-width: 900px) { .ak-mobile-only { display: none !important; } }
+@media (max-width: 899px) { .ak-desktop-only { display: none !important; } }

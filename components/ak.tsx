@@ -1,4 +1,4 @@
-import { ArrowRight, ClipboardCheck, MapPin, Phone, ShoppingBag } from "lucide-react";
+import { ArrowRight, CalendarCheck, ClipboardCheck, MapPin, Phone, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { IntakeButton } from "@/components/intake-button";
@@ -61,12 +61,21 @@ export function CityChips({ limit }: { limit?: number }) {
 export function ActionRow({ align = "start" }: { align?: "start" | "center" }) {
   return (
     <div className={`ak-actions ak-actions--${align}`}>
-      <IntakeButton mode="shop" className="ak-btn ak-btn--primary">
+      <a className="ak-btn ak-btn--primary ak-desktop-only" href="#booking">
+        <CalendarCheck aria-hidden="true" size={19} />
+        Book Appointment
+        <ArrowRight aria-hidden="true" size={18} />
+      </a>
+      <a className="ak-btn ak-btn--outline ak-desktop-only" href="#booking">
+        <ClipboardCheck aria-hidden="true" size={19} />
+        Book Appointment
+      </a>
+      <IntakeButton mode="shop" className="ak-btn ak-btn--primary ak-mobile-only">
         <ShoppingBag aria-hidden="true" size={19} />
         Shop Appliances
         <ArrowRight aria-hidden="true" size={18} />
       </IntakeButton>
-      <IntakeButton mode="estimate" className="ak-btn ak-btn--outline">
+      <IntakeButton mode="estimate" className="ak-btn ak-btn--outline ak-mobile-only">
         <ClipboardCheck aria-hidden="true" size={19} />
         Free Estimate
       </IntakeButton>
