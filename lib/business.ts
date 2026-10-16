@@ -66,7 +66,7 @@ export const tracking = {
   googleTagId: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? "AW-18128296932",
   ga4MeasurementId: process.env.NEXT_PUBLIC_GA_ID ?? "",
   metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "4472553883061795",
-  microsoftUetId: process.env.NEXT_PUBLIC_UET_TAG_ID ?? "",
+  microsoftUetId: process.env.NEXT_PUBLIC_UET_TAG_ID ?? "187281294",
   clarityId: process.env.NEXT_PUBLIC_CLARITY_ID ?? "",
   googleAdsBookingLabel: process.env.NEXT_PUBLIC_GADS_BOOKING_LABEL ?? "OaGMCLeclp0dEOS3n8RD",
   googleAdsShopLabel: process.env.NEXT_PUBLIC_GADS_SHOP_LABEL ?? "",

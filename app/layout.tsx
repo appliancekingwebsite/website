@@ -1,14 +1,15 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
 import { ConversionListeners } from "@/components/conversion-listeners";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { IntakeModal } from "@/components/intake-modal";
+import { JsonLd } from "@/components/json-ld";
 import { MobileActions } from "@/components/mobile-actions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { JsonLd } from "@/components/json-ld";
 import { TrackingHead } from "@/components/tracking-head";
 import { business, hasProductionDomain, siteUrl, tracking } from "@/lib/business";
 import { websiteGraph } from "@/lib/seo";
+import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import "./theme.css";
 
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <MobileActions />
         <IntakeModal />
         <ConversionListeners />
+        <CookieConsentBanner />
       </body>
     </html>
   );
