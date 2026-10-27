@@ -69,8 +69,8 @@ export const tracking = {
   microsoftUetId: process.env.NEXT_PUBLIC_UET_TAG_ID ?? "187281294",
   clarityId: process.env.NEXT_PUBLIC_CLARITY_ID ?? "",
   googleAdsBookingLabel: process.env.NEXT_PUBLIC_GADS_BOOKING_LABEL ?? "OaGMCLeclp0dEOS3n8RD",
-  googleAdsShopLabel: process.env.NEXT_PUBLIC_GADS_SHOP_LABEL ?? "",
-  googleAdsEstimateLabel: process.env.NEXT_PUBLIC_GADS_ESTIMATE_LABEL ?? "",
+  googleAdsShopLabel: process.env.NEXT_PUBLIC_GADS_SHOP_LABEL ?? "pktQCNOzlZ0dEOS3n8RD",
+  googleAdsEstimateLabel: process.env.NEXT_PUBLIC_GADS_ESTIMATE_LABEL ?? "2f9VCNazlZ0dEOS3n8RD",
   googleAdsCallLabel: process.env.NEXT_PUBLIC_GADS_CALL_LABEL ?? "hTi1CLihlp0dEOS3n8RD",
 } as const;
 

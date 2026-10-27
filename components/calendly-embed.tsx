@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { business } from "@/lib/business";
+import { business, siteUrl } from "@/lib/business";
+
+// Calendly only posts calendly.event_scheduled to the parent page when the iframe declares it is embedded.
+const embedSrc = `${business.bookingEmbedUrl}&embed_type=Inline&embed_domain=${new URL(siteUrl).host}`;
 
 export function CalendlyEmbed({ eager = false }: { eager?: boolean }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -32,7 +35,7 @@ export function CalendlyEmbed({ eager = false }: { eager?: boolean }) {
         <iframe
           className="calendly-inline-widget"
           data-calendar-loaded="true"
-          src={business.bookingEmbedUrl}
+          src={embedSrc}
           title="Schedule an Appliance King estimate with Calendly"
           loading={eager ? "eager" : "lazy"}
         />
