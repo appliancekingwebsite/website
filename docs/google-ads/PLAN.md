@@ -2,6 +2,21 @@
 
 Campaign: **Appliance King Max Leads and Calls** (account 724-984-1766). Search only, Maximize conversions, 40 mi around Macon, all days 8 AM to 9 PM, started Oct 18.
 
+## Applied in Google Ads (Oct 27, 2026)
+
+The budget is unchanged at **$10/day**.
+
+- **Conversions:** Shop Intake Text and Estimate Intake Text are now **Primary**.
+- **Ad groups:** 7 new themed ad groups are live with 178 keywords. "used appliance store near me" was rejected twice by a Google policy check, so it was skipped; close variants of the other used-appliance keywords cover it. Old "Ad group 1" is **paused**.
+- **Ads:** 7 new ads are live. The first version used a "Call 478-273-7539" headline, which Google flags as a phone number in ad text, so those ads were replaced and the originals paused. The call button carries the number instead.
+- **Negative keywords:** all 71 added at campaign level.
+- **Sitelinks:** 8 new sitelinks at campaign level. 6 old ones with unsupported claims are paused. "Oven & Stove Repair" is kept.
+- **Callouts:** 10 new callouts at account level. The 9 old campaign callouts, which overrode them and included "Washers/Dryers From $200" and "Fast In-Home Estimates", are paused.
+- **Structured snippet:** Service catalog snippet added.
+- **Not done (needs the owner):**
+  - fix the business name disapproval in Billing / Advertiser verification
+  - link the Google Business Profile for a location asset
+
 ## What the audit found
 
 | # | Problem | Impact | Status |
