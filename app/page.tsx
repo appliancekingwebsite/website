@@ -47,7 +47,7 @@ export default function HomePage() {
                 delivery or pickup to Macon and cities within about {business.serviceRadiusMiles} miles. Tap Shop, tell us
                 what you need, and text us in under a minute.
               </p>
-              <ActionRow />
+              <ActionRow bookHref="#booking" />
               <ul className="ak-trust">
                 <li><ShieldCheck aria-hidden="true" size={17} /> Insured</li>
                 <li><Truck aria-hidden="true" size={17} /> Delivery &amp; pickup</li>
@@ -102,7 +102,7 @@ export default function HomePage() {
                   <li key={item.href}><Link href={item.href}>{item.name}<ArrowRight aria-hidden="true" size={15} /></Link></li>
                 ))}
               </ul>
-              <ActionRow />
+              <ActionRow bookHref="#booking" />
             </div>
             <div className="ak-stack">
               <Photo image={photos.cabrio} sizes="(max-width: 900px) 92vw, 520px" />

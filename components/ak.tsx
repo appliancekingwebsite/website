@@ -58,18 +58,25 @@ export function CityChips({ limit }: { limit?: number }) {
   );
 }
 
-export function ActionRow({ align = "start" }: { align?: "start" | "center" }) {
+// bookHref: "#booking" only on the homepage, where the inline calendar lives.
+export function ActionRow({
+  align = "start",
+  bookHref = "/book",
+}: {
+  align?: "start" | "center";
+  bookHref?: "/book" | "#booking";
+}) {
   return (
     <div className={`ak-actions ak-actions--${align}`}>
-      <a className="ak-btn ak-btn--primary ak-desktop-only" href="#booking">
+      <Link className="ak-btn ak-btn--primary ak-desktop-only" href={bookHref} data-book>
         <CalendarCheck aria-hidden="true" size={19} />
         Book Appointment
         <ArrowRight aria-hidden="true" size={18} />
-      </a>
-      <a className="ak-btn ak-btn--outline ak-desktop-only" href="#booking">
-        <ClipboardCheck aria-hidden="true" size={19} />
-        Book Appointment
-      </a>
+      </Link>
+      <IntakeButton mode="shop" className="ak-btn ak-btn--outline ak-desktop-only">
+        <ShoppingBag aria-hidden="true" size={19} />
+        Shop Appliances
+      </IntakeButton>
       <IntakeButton mode="shop" className="ak-btn ak-btn--primary ak-mobile-only">
         <ShoppingBag aria-hidden="true" size={19} />
         Shop Appliances
