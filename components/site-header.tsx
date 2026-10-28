@@ -53,7 +53,7 @@ function Brand() {
     <Link className="brand" href="/" aria-label="Appliance King home">
       <Image
         src={business.logoPath}
-        alt=""
+        alt="Appliance King crown logo"
         width={58}
         height={58}
         className="brand__mark"

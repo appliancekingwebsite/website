@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <Image src={business.logoPath} alt="" width={88} height={88} />
+          <Image src={business.logoPath} alt="Appliance King crown logo" width={88} height={88} />
           <div>
             <strong>Appliance King</strong>
             <p>Buy · Sell · Fix</p>
