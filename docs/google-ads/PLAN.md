@@ -17,6 +17,15 @@ The budget is unchanged at **$10/day**.
   - fix the business name disapproval in Billing / Advertiser verification
   - link the Google Business Profile for a location asset
 
+## Follow-up (Oct 27, 2026, evening)
+
+- **Landing pages:** 62 keywords now point to their exact page. Fridge, stove, and dryer shoppers go to that appliance's used page. Dryer, dishwasher, vent, and installation repair go to those service pages. City keywords go to the matching city page.
+- **New buyer keywords:** 54 high-volume keywords added in Exact and Phrase match, for example "refrigerator for sale", "washer and dryer for sale", "used stove", "appliance repair", "dryer repair". Location targeting (40 mi around Macon) already keeps them local, so city names aren't needed.
+- **Negatives:** 20 guard negatives added (new-appliance shoppers, big-box stores, mini/RV/wine fridges, wood/pellet stoves). 91 total.
+- **Low-volume keywords:** 52 marked "Low search volume" were removed. The generic keywords above cover those searches.
+- **Ads:** the Oven/Stove/Dishwasher and Brand ads were Average, so they were rebuilt with keyword headlines and a full 15 headlines / 4 descriptions. The old versions are paused.
+- **Status:** campaign is Eligible (Learning) at $10/day.
+
 ## What the audit found
 
 | # | Problem | Impact | Status |
