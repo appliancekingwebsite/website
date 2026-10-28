@@ -26,6 +26,19 @@ The budget is unchanged at **$10/day**.
 - **Ads:** the Oven/Stove/Dishwasher and Brand ads were Average, so they were rebuilt with keyword headlines and a full 15 headlines / 4 descriptions. The old versions are paused.
 - **Status:** campaign is Eligible (Learning) at $10/day.
 
+## Final setup (Oct 27, 2026, night)
+
+- **Image assets:** 8 real showroom photos (5 square, 3 landscape) added to the campaign. Source files are in `docs/google-ads/images/`.
+- **Business name:** appeal submitted. Google wants the name to match the verified advertiser name, so the logo shows only if the appeal is approved or the verification is updated.
+- **Removed:** the 7 disapproved phone-number ads. Their removal is what clears the "Some ads limited by policy" warning on the ad groups, which Google refreshes on its own.
+- **Auto-apply recommendations:** confirmed off (0 of 21). Google can't change the campaign on its own.
+- **Verified settings:**
+  - 40 mi around Macon, Presence only; Search Network only
+  - Maximize conversions, $10/day
+  - Conversion goals: lead forms (texts), calls, contacts, bookings
+  - AI Max, broad match and auto-created assets off
+- **The only ongoing change should be the budget.**
+
 ## What the audit found
 
 | # | Problem | Impact | Status |
