@@ -37,6 +37,7 @@ The budget is unchanged at **$10/day**.
   - Maximize conversions, $10/day
   - Conversion goals: lead forms (texts), calls, contacts, bookings
   - AI Max, broad match and auto-created assets off
+- **Location asset:** already linked. The owner's Business Profile ("Appliance king, 928 S Ponce De Leon Cir, Macon, GA 31206") is an enabled account-level location asset and has been serving. The agency's linked profile has no locations, so no wrong address can show.
 - **The only ongoing change should be the budget.**
 
 ## What the audit found
